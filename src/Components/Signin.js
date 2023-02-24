@@ -1,12 +1,10 @@
 import { useState } from "react"
 import Typed from "react-typed"
 import { CgProfile } from "react-icons/cg"
-import { useNavigate } from "react-router-dom"
 
 const SigninPage = ({ Login }) =>{
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const Navigate = useNavigate()
 
 
     function reset(){

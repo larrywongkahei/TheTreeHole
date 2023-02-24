@@ -128,14 +128,14 @@ function App() {
         <Header loggedInStatus={loggedInStatus}/>
         <NavBar />
         <Routes>
-          <Route path="/TheTreeHole" element={<LandingPage handlePlaying={handleplaying} />} />
-          <Route path="/TheTreeHole/query" element={<Query />} />
-          <Route path="/TheTreeHole/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
-          <Route path="/TheTreeHole/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
-          <Route path="/TheTreeHole/introduction" element={<Introducion />} />
-          <Route path="/TheTreeHole/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames}/>} />
-          <Route path="/TheTreeHole/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
-          <Route path="/TheTreeHole/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList}/>} />
+          <Route path="/" element={<LandingPage handlePlaying={handleplaying} />} />
+          <Route path="/query" element={<Query />} />
+          <Route path="/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
+          <Route path="/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
+          <Route path="/introduction" element={<Introducion />} />
+          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames}/>} />
+          <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
+          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList}/>} />
         </Routes>
         <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>

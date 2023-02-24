@@ -29,7 +29,7 @@ function Profile({userComments, loggedInUserID, titleList}){
     const publicTitleNodes = publicTitles.map(each => {
         return (
                 <ul className="text-white flex flex-col bg-red-500 py-5 rounded-md">
-                    <Link to={`/TheTreeHole/forum/${each.id}`}>
+                    <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
                         </li>

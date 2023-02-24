@@ -4,7 +4,7 @@ function Introducion(){
     return (
         <div>
             add come introduction here, link to signup page.
-            <Link to="/TheTreeHole/signup" >
+            <Link to="/signup" >
             <button className="text-white flex ">Sounds good</button>
             </Link>
         </div>

@@ -16,7 +16,7 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                 < CgProfile size={90} className="sm:mx-1 sm:mt-2 sm:w-[25%] sm:h-full ml-32"/>
                 <ul className="sm:justify-center sm:w-[75%]">
                     <li className="font-bold text-[2rem] font-mono pb-5 justify-self-center pt-3 text-ellipsis overflow-hidden ">
-                        <Link to={`/TheTreeHole/forum/${each.id}`}>
+                        <Link to={`/forum/${each.id}`}>
                         {each.title}
                         </Link>
                     </li>
