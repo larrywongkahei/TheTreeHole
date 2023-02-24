@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import NavBar from './Components/NavBar';
 import TitleContainer from './Components/TitleContainer';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignupPage from './Components/Signup';
 import Query from './Components/Query';
 import SigninPage from './Components/Signin';
@@ -124,7 +124,7 @@ function App() {
         autoLoad={true}
         loop={true}
       />
-      <HashRouter>
+      <BrowserRouter>
         <Header loggedInStatus={loggedInStatus}/>
         <NavBar />
         <Routes>
@@ -139,7 +139,7 @@ function App() {
         </Routes>
         <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>
-      </HashRouter>
+      </BrowserRouter>
     </div>
 
   );
