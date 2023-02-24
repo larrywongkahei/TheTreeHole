@@ -52,7 +52,6 @@ function App() {
     }
     getdata()
   }, [])
-  console.log(titleList)
 
 
   async function createUser(data){
