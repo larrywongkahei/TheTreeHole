@@ -4,7 +4,7 @@
   // forumapp/views.py Line83
   const API = {
     createUser(newUser) {
-      return fetch('https://thetreehole.herokuapp.com/api/Create', {
+      return fetch('https://thetreeholebackend.herokuapp.com/api/Create', {
         method: "post",
         body: JSON.stringify(newUser),
         headers: {
@@ -25,7 +25,7 @@
   
   
     createTitle(data) {
-      return fetch('https://thetreehole.herokuapp.com/api/Titles', {
+      return fetch('https://thetreeholebackend.herokuapp.com/api/Titles', {
         method: "post",
         body: JSON.stringify(data),
         headers: {
@@ -36,7 +36,7 @@
   
   
      Login(user) {
-      return fetch('https://thetreehole.herokuapp.com/api/Login', {
+      return fetch('https://thetreeholebackend.herokuapp.com/api/Login', {
         method: "post",
         body: JSON.stringify(user),
         headers: {
@@ -56,7 +56,7 @@
   },
   
       createComment(data) {
-          return fetch('https://thetreehole.herokuapp.com/api/Comments', {
+          return fetch('https://thetreeholebackend.herokuapp.com/api/Comments', {
               method: "post",
               body: JSON.stringify(data),
               headers: {
@@ -66,7 +66,7 @@
       },
   
       createPrivateComments(data){
-        return fetch('https://thetreehole.herokuapp.com/api/PrivateComments', {
+        return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments', {
           method: "post",
           body: JSON.stringify(data),
           headers: {
@@ -76,22 +76,22 @@
       },
   
       getTitles(){
-        return fetch('https://thetreehole.herokuapp.com/api/Titles')
+        return fetch('https://thetreeholebackend.herokuapp.com/api/Titles')
         .then(res => res.json())      
       },
   
       getComments(){
-        return fetch('https://thetreehole.herokuapp.com/api/Comments')
+        return fetch('https://thetreeholebackend.herokuapp.com/api/Comments')
         .then(res => res.json())
       },
   
       getPrivateComments(){
-        return fetch('https://thetreehole.herokuapp.com/api/PrivateComments')
+        return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments')
         .then(res => res.json())
       },
   
       getLatestUsers(){
-        return fetch('https://thetreehole.herokuapp.com/api/Create')
+        return fetch('https://thetreeholebackend.herokuapp.com/api/Create')
         .then(res => res.json())
       }
   
