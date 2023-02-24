@@ -84,6 +84,8 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                         This button to Add a story
                     </p>
                     </button>
+                    <button className="w-[50px] h-[50px] border overflow-hidden relative transition-[width] duration-[0.2s] ease-[ease-in-out] font-medium rounded-[25px] border-solid border-[#cdcdcd] hover:w-[120px]">
+                    </button>
             </div>
             {!showTitleForm ? 
             <div>

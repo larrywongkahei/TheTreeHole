@@ -4,10 +4,11 @@ import { CgProfile } from "react-icons/cg"
 import { useNavigate } from "react-router-dom"
 
 
-const SignupPage = ({ createUser, loggedInStatus }) => {
+const SignupPage = ({ createUser }) => {
     const [username, setUserName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [image, setImage] = useState()
     const Navigate = useNavigate()
 
 
@@ -15,6 +16,10 @@ const SignupPage = ({ createUser, loggedInStatus }) => {
         setUserName("")
         setEmail("")
         setPassword("")
+    }
+
+    function handleImage(e) {
+        setImage(e.target.files[0])
     }
 
     function handleEmail(e) {
@@ -38,7 +43,8 @@ const SignupPage = ({ createUser, loggedInStatus }) => {
         const newUser = {
             "username": username,
             "email": email,
-            "password": password
+            "password": password,
+            "image": image
         }
         if(username && email && password){
             await createUser(newUser)
@@ -63,6 +69,7 @@ const SignupPage = ({ createUser, loggedInStatus }) => {
                 <CgProfile size={100}/>
             </div>
                 <form onSubmit={handleSignupForm} className="flex flex-col items-center pt-12 gap-y-9" id='form'>
+                    <input type="file" accept="image/png, image/jpeg" onChange={handleImage} />
                     <input type="text" value={email} onChange={handleEmail} placeholder="Enter Your Email" className="p-2 rounded-full text-center bg-white bg-opacity-40 focus:bg-opacity-50 placeholder:text-white placeholder:italic" />
                     <input type="text" value={username} onChange={handleUserName} placeholder="Enter Your Username" className="p-2 rounded-full text-center bg-white bg-opacity-40 focus:bg-opacity-50 placeholder:text-white placeholder:italic" />
                     <input type="text" value={password} onChange={handlePassword} placeholder="Enter Your Password" className="p-2 rounded-full text-center bg-white bg-opacity-40 focus:bg-opacity-50 placeholder:text-white placeholder:italic" />
