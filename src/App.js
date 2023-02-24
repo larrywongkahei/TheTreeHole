@@ -35,9 +35,9 @@ function App() {
     const getdata = async () => {
       const fetchTitles = await fetch('https://thetreehole.herokuapp.com/api/Titles');
       const titlesData = await fetchTitles.json()
-      const fetchComments = await fetch('https://thetreehole.herokuapp.com/api/api/Comments');
+      const fetchComments = await fetch('https://thetreehole.herokuapp.com/api/Comments');
       const commentsData = await fetchComments.json()
-      const fetchUsernames = await fetch('https://thetreehole.herokuapp.com/api/api/Create');
+      const fetchUsernames = await fetch('https://thetreehole.herokuapp.com/api/Create');
       const usernames = await fetchUsernames.json()
       const fetchUserComments = await fetch('https://thetreehole.herokuapp.com/api/PrivateComments')
       const privateComments = await fetchUserComments.json()
@@ -52,6 +52,7 @@ function App() {
     }
     getdata()
   }, [])
+  console.log(titleList)
 
 
   async function createUser(data){
