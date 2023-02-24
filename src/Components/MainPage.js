@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { CgProfile } from "react-icons/cg"
 import { Link } from "react-router-dom"
+import { MdOutlineAddBox } from "react-icons/md"
 
 function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames}) {
     const [showTitleForm, setShowTitleForm] = useState(false)
@@ -76,8 +77,13 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
 
     return (
         <div className="flex flex-col text-center">
-             <div>
-                <button className="text-white bg-red-500 py-6" onClick={handleTitleFunction}>This button to Add a story</button>
+             <div className="flex justify-center">
+                <button className="text-white py-6 flex gap-4 px-2 mt-3 rounded-full bg-gray-600 bg-opacity-80" onClick={handleTitleFunction}>
+                    < MdOutlineAddBox size={35} />
+                    <p className="pt-1 font-bold text-md">
+                        This button to Add a story
+                    </p>
+                    </button>
             </div>
             {!showTitleForm ? 
             <div>

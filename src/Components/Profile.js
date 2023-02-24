@@ -15,7 +15,7 @@ function Profile({userComments, loggedInUserID, titleList}){
 
     const privateCommentsNodes = privateComments.map(each => {
         return (
-                <ul className="text-white flex flex-col bg-red-500 py-5 rounded-md">
+                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 rounded-md lg:mx-80 md:mx-12">
                     <li>
                         {each.privateTitles}
                     </li>
@@ -28,7 +28,7 @@ function Profile({userComments, loggedInUserID, titleList}){
 
     const publicTitleNodes = publicTitles.map(each => {
         return (
-                <ul className="text-white flex flex-col bg-red-500 py-5 rounded-md">
+                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12">
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}

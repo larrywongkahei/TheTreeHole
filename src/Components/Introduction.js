@@ -18,7 +18,7 @@ function Introducion(){
                 "Tree Hole" is a metaphor in HongKong to discribe a place or a person that you could fully rely on sharing your emotions.\
                 We want you to know.\
                 You are not alone, we are here for you.']}
-                typeSpeed={30}
+                typeSpeed={45}
                 className="text-white"
                 />
             </p>
