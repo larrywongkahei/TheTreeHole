@@ -4,10 +4,10 @@ const Query = () =>{
     return (
         <div className="text-white ">
             <h1>Are You the first time here?</h1>
-            <Link to="/introduction">
+            <Link to="/TheTreeHole/introduction">
                 <button>Yes</button>
             </Link>
-            <Link to="/Signin">
+            <Link to="/TheTreeHole/Signin">
                 <button>No</button>
             </Link>
 
