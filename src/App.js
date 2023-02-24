@@ -33,13 +33,13 @@ function App() {
   // Fetch Data from API
   useEffect(() => {
     const getdata = async () => {
-      const fetchTitles = await fetch('http://localhost:8000/api/Titles');
+      const fetchTitles = await fetch('https://thetreehole.herokuapp.com/api/Titles');
       const titlesData = await fetchTitles.json()
-      const fetchComments = await fetch('http://localhost:8000/api/Comments');
+      const fetchComments = await fetch('https://thetreehole.herokuapp.com/api/api/Comments');
       const commentsData = await fetchComments.json()
-      const fetchUsernames = await fetch('http://localhost:8000/api/Create');
+      const fetchUsernames = await fetch('https://thetreehole.herokuapp.com/api/api/Create');
       const usernames = await fetchUsernames.json()
-      const fetchUserComments = await fetch('http://localhost:8000/api/PrivateComments')
+      const fetchUserComments = await fetch('https://thetreehole.herokuapp.com/api/PrivateComments')
       const privateComments = await fetchUserComments.json()
       // Set the data fetched to the State
       Promise.all(titlesData, commentsData, usernames, privateComments)
