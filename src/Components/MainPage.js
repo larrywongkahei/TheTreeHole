@@ -83,9 +83,7 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                     <p className="pt-1 font-bold text-md">
                         This button to Add a story
                     </p>
-                    </button>
-                    <button className="w-[50px] h-[50px] border overflow-hidden relative transition-[width] duration-[0.2s] ease-[ease-in-out] font-medium rounded-[25px] border-solid border-[#cdcdcd] hover:w-[120px]">
-                    </button>
+                </button>
             </div>
             {!showTitleForm ? 
             <div>
@@ -96,7 +94,6 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                 </div> 
             </div>: null}
             {showTitleForm ? 
-            // <div className="m-12 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 flex justify-center">
             <form onSubmit={handleSubmit} className="pt-16 mx-5 lg:mx-80 md:mx-64">
                 <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                     <div className="w-full mb-4 border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
