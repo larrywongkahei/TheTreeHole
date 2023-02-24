@@ -1,5 +1,4 @@
 import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs"
-import { FiAtSign } from "react-icons/fi"
 
 function Footer () {
     function toGithub(){
