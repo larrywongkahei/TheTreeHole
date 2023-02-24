@@ -29,12 +29,11 @@ const SigninPage = ({ Login }) =>{
         await Login(user)
         reset()
     }
-    // <div className=" sm:bg-blue-300 md:bg-yellow-200 lg:bg-red-500 xl:bg-blue-300 2xl:bg-yellow-200"></div>
 
     return (
         <div>
             <div className="font-bold text-4xl text-white pt-16 text-center">
-                <Typed strings={["How's your day?", 'We care about you', '']}
+                <Typed strings={["How's your day?", 'We care about you']}
                 typeSpeed={100}
                 backSpeed={80}
                 backDelay={600} 

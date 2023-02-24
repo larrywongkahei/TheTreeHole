@@ -48,10 +48,9 @@ const SignupPage = ({ createUser, loggedInStatus }) => {
         }
         
     }
-    // <div className=" sm:bg-blue-300 md:bg-yellow-200 lg:bg-red-500 xl:bg-blue-300 2xl:bg-yellow-200">
 
     return (
-        <div className=" sm:bg-blue-300 md:bg-yellow-200 lg:bg-red-500 xl:bg-blue-300 2xl:bg-yellow-200">
+        <div>
             <div className=" mt-5 mx-16 rounded-lg h-80">
             <div className="font-bold text-4xl text-white text-center pb-5">
                 <Typed strings={["How's your day?", 'We care about you', 'You are not alone']}
@@ -71,7 +70,7 @@ const SignupPage = ({ createUser, loggedInStatus }) => {
                 </form>
                 <div className="text-white flex justify-center pt-4 gap-2">
                     <p>
-                        Have a account?
+                        Have an account?
                     </p>
                     <button onClick={handlePressme}>Press me</button>
                 </div>
