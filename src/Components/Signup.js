@@ -59,8 +59,8 @@ const SignupPage = ({ createUser }) => {
             <div className=" mt-5 mx-16 rounded-lg h-100">
                 <div className="font-bold text-4xl text-white text-center pb-5">
                     <Typed strings={["How's your day?", 'We care about you', 'You are not alone']}
-                    typeSpeed={100}
-                    backSpeed={80}
+                    typeSpeed={70}
+                    backSpeed={70}
                     backDelay={900} 
                     loop />
                 </div>
