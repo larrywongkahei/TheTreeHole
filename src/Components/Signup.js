@@ -8,7 +8,7 @@ const SignupPage = ({ createUser }) => {
     const [username, setUserName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [image, setImage] = useState()
+    // const [image, setImage] = useState()
     const Navigate = useNavigate()
 
 
@@ -18,9 +18,9 @@ const SignupPage = ({ createUser }) => {
         setPassword("")
     }
 
-    function handleImage(e) {
-        setImage(e.target.files[0])
-    }
+    // function handleImage(e) {
+    //     setImage(e.target.files[0])
+    // }
 
     function handleEmail(e) {
         setEmail(e.target.value)
@@ -45,6 +45,7 @@ const SignupPage = ({ createUser }) => {
             "email": email,
             "password": password,
         }
+
         if(username && email && password){
             await createUser(newUser)
             reset()
