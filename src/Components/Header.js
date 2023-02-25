@@ -3,8 +3,6 @@ import { useEffect } from "react"
 import { CgProfile } from "react-icons/cg"
 import { BiLogOut } from "react-icons/bi"
 
-
-
 function Header ({loggedInStatus}) {
     const Navigate = useNavigate()
 
@@ -16,7 +14,7 @@ function Header ({loggedInStatus}) {
     }, [loggedInStatus])
 
     function handleLogOut(){
-        window.location = "http://localhost:3000/TheTreeHole/#/Signin"
+        window.location.replace('https://larrywongkahei.github.io/TheTreeHole/#/Signin')
         window.location.reload(false)
     }
 
