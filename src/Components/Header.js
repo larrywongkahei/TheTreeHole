@@ -17,7 +17,7 @@ function Header ({loggedInStatus}) {
 
     function handleLogOut(){
         window.location = "http://localhost:3000/TheTreeHole/#/Signin"
-        // window.location.reload(false)
+        window.location.reload(false)
     }
 
 
