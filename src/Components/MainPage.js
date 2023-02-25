@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { CgProfile } from "react-icons/cg"
 import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
+import flower from "../flower/flower.jpeg"
 
 function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames}) {
     const [showTitleForm, setShowTitleForm] = useState(false)
@@ -13,25 +14,28 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
         const theComment = commentList.findLast(comment => comment.title === each.id)
         const theUser = usernames.find(user => user.id === each.userID)
         return (
-            <div className="sm:flex sm:justify-items-stretch mx-20 dark:bg-gray-700 rounded-md mb-5 md:mx-40 lg:mx-32 xl:mx-72 py-5 md:mx:auto">
-                < CgProfile size={90} className="sm:mx-1 sm:mt-2 sm:w-[25%] sm:h-full ml-32"/>
-                <ul className="sm:justify-center sm:w-[75%]">
-                    <li className="font-bold text-[2rem] font-mono pb-5 justify-self-center pt-3 text-ellipsis overflow-hidden ">
+            <div className="grid justify-items grid-cols-6 grid-rows-3 mx-20 dark:bg-gray-700 rounded-md mb-5 md:mx-40 lg:mx-32 xl:mx-72">
+                <div className="sm:mt-2 sm:w-full sm:h-full col-span-2 row-span-2 border-r">
+                    {/* < CgProfile size={110} className="ml-12"/> */}
+                    <img src={flower} className="rounded-full h-48 w-48 mx-auto"/>
+                </div>
+                <ul className="col-span-4 row-span-1 w-full">
+                    <li className="font-bold text-[2rem] font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b">
                         <Link to={`/forum/${each.id}`}>
                         {each.title}
                         </Link>
                     </li>
-                {theComment? 
-                <div>
-                    <p className="text-gray-200 italic text-ellipsis overflow-hidden px-6 pb-5 sm:h-12 ">
-                        {theComment.content}
-                    </p>
-                    <p>
-                        {theUser.username}
-                    </p>
-                </div>
-                    : null}
                 </ul>
+                    {theComment? 
+                    <div className="row-span-2 col-span-4">
+                        <p className="text-gray-200 italic breack-words px-6 pb-5 sm:h-12 ">
+                            {each.content}
+                        </p>
+                    </div>
+                        : null}
+                <p className="col-span-2 pt-6 text-xl font-serif border-r">
+                        {theUser.username}
+                </p>
             </div>
         )
     })

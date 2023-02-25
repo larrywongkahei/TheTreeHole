@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { CgProfile } from "react-icons/cg"
+import flower from "../flower/flower.jpeg"
+
 
 
 function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList }){
@@ -34,7 +36,8 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
         })
        return( 
        <div className="text-white text-center sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
-            < CgProfile size={90} className="sm:mx-1 sm:mt-1 sm:w-[25%] sm:h-full ml-32 "/>
+            {/* < CgProfile size={90} className="sm:mx-1 sm:mt-1 sm:w-[25%] sm:h-full ml-32 "/> */}
+            <img src={flower} className="rounded-full h-48 w-48 m-auto ml-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
                 <ul>
                     <li className=" mx-3 sm:pt-16 py-5">

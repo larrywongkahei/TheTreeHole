@@ -33,7 +33,7 @@ const SigninPage = ({ Login }) =>{
     return (
         <div>
             <div className="font-bold text-4xl text-white pt-12 text-center pb-4">
-                <Typed strings={["How's your day?", 'We care about you']}
+                <Typed strings={["Welcome Back!", 'We care about you']}
                 typeSpeed={70}
                 backSpeed={70}
                 backDelay={600} 
