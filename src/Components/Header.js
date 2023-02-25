@@ -15,7 +15,7 @@ function Header ({loggedInStatus}) {
 
     function handleLogOut(){
         window.location.replace('https://larrywongkahei.github.io/TheTreeHole/#/Signin')
-        window.location.reload(false)
+        // window.location.reload(false)
     }
 
 
