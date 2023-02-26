@@ -41,7 +41,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
            }
            updateCommentInteractions(data)    }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
         const today = new Date()
         const title = titleList.find(each => {
@@ -56,8 +56,8 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
 
         
-        createComment(data)
-        createCommentInteractions()
+        await createComment(data)
+        await createCommentInteractions()
         setTextAreaData("")
     }
 
@@ -65,7 +65,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const commentNodes = commentsOfTitle.map(each => {
         const thecommentInteraction = allCommentInteractions.find(interaction => interaction.id === each.id)
-
         const user = usernames.find(user => {
             return user.id === each.userID
         })
@@ -81,21 +80,24 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 </ul>
                 <ul className="sm:flex">
                     <div className="sm:flex gap-2">
+                        {thecommentInteraction? 
                         <li className="text-xl">
                             {thecommentInteraction.like}
-                        </li>
+                        </li> : 0}
                         <li className="pt-1" onClick={() => handleLike(each.id)}>
                             <BiLike size={20}/>
                         </li>
+                        {thecommentInteraction? 
                         <li className="text-xl">
                             {thecommentInteraction.dislike}
-                        </li>
+                        </li> : 0}
                         <li className="pt-1" onClick={() => handleDislike(each.id)}>
                             <BiDislike size={20}/>
                         </li>
+                        {thecommentInteraction? 
                         <li className="text-xl">
                             {thecommentInteraction.love}
-                        </li>
+                        </li> : 0}
                         <li className="pt-1" onClick={() => handleLove(each.id)}>
                             <FcLike size={20}/>
                         </li>
