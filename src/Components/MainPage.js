@@ -9,6 +9,8 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
+    const [maxLetter, setMaxLetter] = useState(28)
+    const [currentTime, setCurrentTime] = useState('')
 
     const titleNodes = titleList.map(each => {
         const theComment = commentList.findLast(comment => comment.title === each.id)
@@ -20,32 +22,42 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                     <img src={flower} className="rounded-full h-48 w-48 mx-auto"/>
                 </div>
                 <ul className="col-span-4 row-span-1 w-full">
-                    <li className="font-bold text-[2rem] font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b">
+                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4">
                         <Link to={`/forum/${each.id}`}>
                         {each.title}
                         </Link>
                     </li>
                 </ul>
                     {theComment? 
-                    <div className="row-span-2 col-span-4">
+                    <div className="col-start-3 col-span-4 row-span-2">
                         <p className="text-gray-200 italic breack-words px-6 pb-5 sm:h-12 ">
                             {each.content}
                         </p>
                     </div>
                         : null}
-                <p className="col-span-2 pt-6 text-xl font-serif border-r">
+                <p className="col-start-1 col-span-2 pt-6 text-xl font-serif border-r">
                         {theUser.username}
                 </p>
             </div>
         )
     })
 
+    function handleTitle(e){
+        if (e.target.value.length <= 28){
+            setTitle(e.target.value)
+            setMaxLetter(28 - e.target.value.length)
+        }
+    }
+
+
     function handleTitleFunction(){
         setShowTitleForm(!showTitleForm)
+
     }
 
     function handleChange(e){
         setTextAreaData(e.target.value)
+
     }
 
     function handlePrivate(e){
@@ -58,10 +70,13 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
 
     async function handleSubmit(e){
         e.preventDefault()
+        const today = new Date()
+        setCurrentTime(today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds())
         const data = {
         'title' : title,
         'content' : textAreaData,
-        'userID' : loggedInUserID
+        'userID' : loggedInUserID,
+        'time' : currentTime
         }
 
         if(keepPrivate){
@@ -73,10 +88,6 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
         setTextAreaData("")
         setTitle("")
         setShowTitleForm(!showTitleForm)
-    }
-
-    function handleTitle(e){
-        setTitle(e.target.value)
     }
 
     return (
@@ -109,8 +120,9 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                             <option value="false">Public</option>
                         </select>
                     </div>
-                    <div className="mx-5 px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800 border-b border-gray-600">
+                    <div className="mx-5 pl-4 pr-10 py-2 bg-white rounded-t-lg dark:bg-gray-800 border-b border-gray-600 flex gap-4">
                         <input type="text" onChange={handleTitle} value={title}  className="w-full py-1 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Enter your title"/>
+                        <label className="text-gray-600">{maxLetter}</label>
                     </div>
                     <div className="mx-5 px-4 py-2 mb-4 bg-white rounded-b-lg dark:bg-gray-800">
                         <textarea onChange={handleChange} value={textAreaData} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none" placeholder="Share Your Story with us"/>

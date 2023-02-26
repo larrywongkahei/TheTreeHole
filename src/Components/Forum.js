@@ -9,6 +9,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
+    const [currentTime, setCurrentTime] = useState("")
 
     function handleChange(e){
         setTextAreaData(e.target.value)
@@ -16,12 +17,15 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     function handleSubmit(e){
         e.preventDefault()
+        const today = new Date()
+        setCurrentTime(today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds())
         const title = titleList.find(each => {
             return each.id === parseInt(titleID)})
         const data= {
             'title' : title.title,
             'content' : textareaData,
-            'userID' : loggedInUserID
+            'userID' : loggedInUserID,
+            'time' : currentTime
         }
         createComment(data)
         setTextAreaData("")
@@ -44,9 +48,12 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                         {each.content}
                     </li>
                 </ul>
-                <ul className="sm:flex sm:justify-end">
-                    <li className="sm:pr-10 sm:mb-5">
+                <ul className="sm:flex sm:justify-end ">
+                    <li className="sm:pr-10 sm:mb-5 sm:">
                         {user.username}
+                    </li>
+                    <li className="pr-3">
+                        {each.time}
                     </li>
                     <li className="justify-self-end pr-3 mb-5">
                         {each.date}
