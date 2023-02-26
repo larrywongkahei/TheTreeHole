@@ -11,6 +11,9 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
     const [title, setTitle] = useState("")
     const [maxLetter, setMaxLetter] = useState(28)
     const [currentTime, setCurrentTime] = useState('')
+    const [hours, setHours] = useState("")
+    const [minutes, setMinutes] = useState("")
+    const [seconds, setSeconds] = useState("")
 
     const titleNodes = titleList.map(each => {
         const theComment = commentList.findLast(comment => comment.title === each.id)
@@ -71,7 +74,22 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
     async function handleSubmit(e){
         e.preventDefault()
         const today = new Date()
-        setCurrentTime(today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds())
+        if (today.getHours().length === 1){
+            setHours(`0${today.getHours()}`)
+        }else{
+            setHours(today.getHours())
+        }
+        if (today.getMinutes().length === 1){
+            setMinutes(`0${today.getMinutes()}`)
+        }else{
+            setMinutes(today.getMinutes())
+        }
+        if (today.getSeconds().length === 1){
+            setSeconds(`0${today.getSeconds()}`)
+        }else{
+            setSeconds(today.getSeconds())
+        }
+        setCurrentTime(hours + ':' + minutes + ':' + seconds)
         const data = {
         'title' : title,
         'content' : textAreaData,
