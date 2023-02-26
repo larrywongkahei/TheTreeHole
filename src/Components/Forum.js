@@ -22,7 +22,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             'id' : id,
             'like' : thecommentInteraction[0].like += 1,
         }
-        console.log(data)
        updateCommentInteractions(data)
     }
 

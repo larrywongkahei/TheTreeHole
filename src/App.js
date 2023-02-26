@@ -44,6 +44,7 @@ function App() {
       const privateComments = await fetchUserComments.json()
       const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
       const CommentInteractionData = await fetchCommentInteraction.json()
+      
       // Set the data fetched to the State
       Promise.all(titlesData, commentsData, usernames, privateComments)
       .then(
@@ -116,7 +117,6 @@ function App() {
     setPlaying(!playing)
   }
 
-  console.log(allCommentInteractions)
   return (
     <div className="flex flex-col min-h-screen pb-20">
       {window.location.pathname !== "/" ? <video
