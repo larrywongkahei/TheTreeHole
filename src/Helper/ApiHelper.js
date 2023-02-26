@@ -63,8 +63,31 @@
                   'Content-type' : 'application/json'
               }
           })
+          .then(res => {
+            console.log(res)
+            res.json()
+          })
       },
-  
+
+      createCommentInteractions() {
+        return fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions', {
+            method: "post",
+            headers: {
+                'Content-type' : 'application/json'
+            }
+        })
+    },
+
+    updateCommentInteractions(data) {
+      return fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions', {
+          method: "put",
+          body: JSON.stringify(data),
+          headers: {
+              'Content-type' : 'application/json'
+          }
+      })
+  },
+
       createPrivateComments(data){
         return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments', {
           method: "post",
@@ -74,6 +97,12 @@
           }
         })
       },
+
+      getCommentInteractions() {
+        return fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions')
+        .then(res => res.json())
+      },
+      
   
       getTitles(){
         return fetch('https://thetreeholebackend.herokuapp.com/api/Titles')

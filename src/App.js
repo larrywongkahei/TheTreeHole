@@ -56,7 +56,6 @@ function App() {
     }
     getdata()
   }, [])
-  console.log(allCommentInteractions)
 
   async function createUser(data){
     await API.createUser(data)
@@ -81,6 +80,12 @@ function App() {
       }
   })
 }
+
+  async function updateCommentInteractions(data){
+    await API.updateCommentInteractions(data)
+    const newCommentinteractiion = await API.getCommentInteractions()
+    setAllCommentInteractions(newCommentinteractiion)
+  }
   
   async function createPrivateComments(data){
     await API.createPrivateComments(data)
@@ -95,6 +100,12 @@ function App() {
 
   }
 
+  async function createCommentInteractions(){
+    await API.createCommentInteractions()
+    const newCommentinteractiion = await API.getCommentInteractions()
+    setAllCommentInteractions(newCommentinteractiion)
+  }
+
   async function createComment(data){
     await API.createComment(data)
     const newComments = await API.getComments()
@@ -104,6 +115,8 @@ function App() {
   function handleplaying() {
     setPlaying(!playing)
   }
+
+  console.log(allCommentInteractions)
   return (
     <div className="flex flex-col min-h-screen pb-20">
       {window.location.pathname !== "/" ? <video
@@ -136,9 +149,9 @@ function App() {
           <Route path="/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
           <Route path="/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
           <Route path="/introduction" element={<Introducion />} />
-          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames}/>} />
+          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions}/>} />
           <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
-          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions}/>} />
+          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions}/>} />
         </Routes>
         <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>

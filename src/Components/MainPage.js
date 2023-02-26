@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
 
-function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames}) {
+function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions}) {
     const [showTitleForm, setShowTitleForm] = useState(false)
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
@@ -60,11 +60,7 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
     }
 
     function handlePrivate(e){
-        if(e.target.value === "true"){
-            setKeepPrivate(true)
-        }else{
-            setKeepPrivate(false)
-        }
+        setKeepPrivate(!keepPrivate)
     }
 
     async function handleSubmit(e){
@@ -82,9 +78,11 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
         }else{
             await createTitle(data)
             await createComment(data)
+            await createCommentInteractions()
         }
         setTextAreaData("")
         setTitle("")
+        setKeepPrivate(true)
         setShowTitleForm(!showTitleForm)
     }
 
@@ -113,7 +111,7 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
                         <p className="w-full px-0 text-sm  border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 mb-2">
                             Do you want to share ?
                         </p>
-                        <select onChange={handlePrivate} className="w-20 rounded-md text-center">
+                        <select onChange={handlePrivate} defaultValue="true" className="w-20 rounded-md text-center">
                             <option value="true">Private</option>
                             <option value="false">Public</option>
                         </select>

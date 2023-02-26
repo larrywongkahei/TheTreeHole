@@ -6,7 +6,7 @@ import flower from "../flower/flower.jpeg"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions }){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions}){
 
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
@@ -16,39 +16,57 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
         setTextAreaData(e.target.value)
     }
 
-    // function handleLike(){
-    //     setLike(like + 1)
-    // }
+    function handleLike(id){
+        const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
+        const data = {
+            'id' : id,
+            'like' : thecommentInteraction[0].like += 1,
+        }
+        console.log(data)
+       updateCommentInteractions(data)
+    }
 
-    // function handleDisLike(){
-    //     setDisLike(dislike + 1)
-    // }
+    function handleDislike(id){
+        const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
+        const data = {
+            'id' : id,
+            'dislike' : thecommentInteraction[0].dislike += 1
+           }
+        updateCommentInteractions(data)    }
 
-    // function handleLove(){
-    //     setLove(love + 1)
-    // }
+    function handleLove(id){
+        const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
+        const data = {
+            'id' : id,
+            'love' : thecommentInteraction[0].love += 1,
+           }
+           updateCommentInteractions(data)    }
 
     function handleSubmit(e){
         e.preventDefault()
         const today = new Date()
         const title = titleList.find(each => {
             return each.id === parseInt(titleID)})
-        const data= {
+
+        const data = {
             'title' : title.title,
             'content' : textareaData,
             'userID' : loggedInUserID,
             'time' : today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
         }
+
+
+        
         createComment(data)
+        createCommentInteractions()
         setTextAreaData("")
     }
 
     const commentsOfTitle = commentList.filter(each => each.title === parseInt(titleID))
 
     const commentNodes = commentsOfTitle.map(each => {
-        const CommentInteractions = allCommentInteractions.find(comment => {
-            return comment.CommentID === each.id
-        })
+        const thecommentInteraction = allCommentInteractions.find(interaction => interaction.id === each.id)
+
         const user = usernames.find(user => {
             return user.id === each.userID
         })
@@ -64,25 +82,22 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 </ul>
                 <ul className="sm:flex">
                     <div className="sm:flex gap-2">
-                    {CommentInteractions.like ? 
                         <li className="text-xl">
-                            {CommentInteractions.like}
-                        </li> : 0}
-                        <li className="pt-1">
+                            {thecommentInteraction.like}
+                        </li>
+                        <li className="pt-1" onClick={() => handleLike(each.id)}>
                             <BiLike size={20}/>
                         </li>
-                        {CommentInteractions.dislike ? 
                         <li className="text-xl">
-                            {CommentInteractions.dislike}
-                        </li> : 0}
-                        <li className="pt-1">
+                            {thecommentInteraction.dislike}
+                        </li>
+                        <li className="pt-1" onClick={() => handleDislike(each.id)}>
                             <BiDislike size={20}/>
                         </li>
-                        {CommentInteractions.love? 
                         <li className="text-xl">
-                            {CommentInteractions.love}
-                        </li> : 0}
-                        <li className="pt-1">
+                            {thecommentInteraction.love}
+                        </li>
+                        <li className="pt-1" onClick={() => handleLove(each.id)}>
                             <FcLike size={20}/>
                         </li>
                     </div>
