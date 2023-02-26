@@ -9,10 +9,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
-    const [currentTime, setCurrentTime] = useState("")
-    const [hours, setHours] = useState("")
-    const [minutes, setMinutes] = useState("")
-    const [seconds, setSeconds] = useState("")
 
     function handleChange(e){
         setTextAreaData(e.target.value)
@@ -21,29 +17,13 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     function handleSubmit(e){
         e.preventDefault()
         const today = new Date()
-        if (today.getHours().length === 1){
-            setHours(`0${today.getHours()}`)
-        }else{
-            setHours(today.getHours())
-        }
-        if (today.getMinutes().length === 1){
-            setMinutes(`0${today.getMinutes()}`)
-        }else{
-            setMinutes(today.getMinutes())
-        }
-        if (today.getSeconds().length === 1){
-            setSeconds(`0${today.getSeconds()}`)
-        }else{
-            setSeconds(today.getSeconds())
-        }
-        setCurrentTime(hours + ':' + minutes + ':' + seconds)
         const title = titleList.find(each => {
             return each.id === parseInt(titleID)})
         const data= {
             'title' : title.title,
             'content' : textareaData,
             'userID' : loggedInUserID,
-            'time' : currentTime
+            'time' : today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
         }
         createComment(data)
         setTextAreaData("")
