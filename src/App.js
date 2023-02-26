@@ -28,6 +28,7 @@ function App() {
   const [userComments, setUserComments] = useState([])
   const [loggedInUserID, setLoggedInUserID] = useState({})
   const [loggedInStatus, setLoggedInStatus] = useState(false)
+  const [allCommentInteractions, setAllCommentInteractions] = useState([])
 
   
   // Fetch Data from API
@@ -39,20 +40,23 @@ function App() {
       const commentsData = await fetchComments.json()
       const fetchUsernames = await fetch('https://thetreeholebackend.herokuapp.com/api/Create');
       const usernames = await fetchUsernames.json()
-      const fetchUserComments = await fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments')
+      const fetchUserComments = await fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments');
       const privateComments = await fetchUserComments.json()
+      const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
+      const CommentInteractionData = await fetchCommentInteraction.json()
       // Set the data fetched to the State
       Promise.all(titlesData, commentsData, usernames, privateComments)
       .then(
       setTitles(titlesData),
       setComments(commentsData),
       setUsername(usernames),
-      setUserComments(privateComments)
+      setUserComments(privateComments),
+      setAllCommentInteractions(CommentInteractionData)
       )
     }
     getdata()
   }, [])
-
+  console.log(allCommentInteractions)
 
   async function createUser(data){
     await API.createUser(data)
@@ -134,7 +138,7 @@ function App() {
           <Route path="/introduction" element={<Introducion />} />
           <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames}/>} />
           <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
-          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList}/>} />
+          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions}/>} />
         </Routes>
         <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>

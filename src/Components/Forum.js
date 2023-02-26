@@ -1,18 +1,32 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { CgProfile } from "react-icons/cg"
+import { BiLike, BiDislike }from "react-icons/bi"
+import  { FcLike } from "react-icons/fc"
 import flower from "../flower/flower.jpeg"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList }){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions }){
 
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
 
+
     function handleChange(e){
         setTextAreaData(e.target.value)
     }
+
+    // function handleLike(){
+    //     setLike(like + 1)
+    // }
+
+    // function handleDisLike(){
+    //     setDisLike(dislike + 1)
+    // }
+
+    // function handleLove(){
+    //     setLove(love + 1)
+    // }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -32,9 +46,11 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     const commentsOfTitle = commentList.filter(each => each.title === parseInt(titleID))
 
     const commentNodes = commentsOfTitle.map(each => {
+        const CommentInteractions = allCommentInteractions.find(comment => {
+            return comment.CommentID === each.id
+        })
         const user = usernames.find(user => {
             return user.id === each.userID
-        
         })
        return( 
        <div className="text-white text-center sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
@@ -46,16 +62,41 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                         {each.content}
                     </li>
                 </ul>
-                <ul className="sm:flex sm:justify-end ">
-                    <li className="sm:pr-10 sm:mb-5 sm:">
-                        {user.username}
-                    </li>
-                    <li className="pr-3">
-                        {each.time}
-                    </li>
-                    <li className="justify-self-end pr-3 mb-5">
-                        {each.date}
-                    </li>
+                <ul className="sm:flex">
+                    <div className="sm:flex gap-2">
+                    {CommentInteractions.like ? 
+                        <li className="text-xl">
+                            {CommentInteractions.like}
+                        </li> : 0}
+                        <li className="pt-1">
+                            <BiLike size={20}/>
+                        </li>
+                        {CommentInteractions.dislike ? 
+                        <li className="text-xl">
+                            {CommentInteractions.dislike}
+                        </li> : 0}
+                        <li className="pt-1">
+                            <BiDislike size={20}/>
+                        </li>
+                        {CommentInteractions.love? 
+                        <li className="text-xl">
+                            {CommentInteractions.love}
+                        </li> : 0}
+                        <li className="pt-1">
+                            <FcLike size={20}/>
+                        </li>
+                    </div>
+                    <div className="flex pl-32">
+                        <li className="sm:pr-10 sm:mb-5 sm:">
+                            {user.username}
+                        </li>
+                        <li className="pr-3">
+                            {each.time}
+                        </li>
+                        <li className="pr-3 mb-5">
+                            {each.date}
+                        </li>
+                    </div>
                 </ul>
             </ul>
         </div>
