@@ -1,17 +1,17 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function Profile({userComments, loggedInUserID, titleList}){
+function Profile({userComments, loggedInUserID, titleList, commentList, usernames, }){
     
     const [nodesData, setNodesData] = useState()
+    const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
+    const theUserFavouriteList = theUserFavourite.split(",")
 
-    const privateComments = userComments.filter(each => {
-        return each.userID === loggedInUserID
-    })
+    const privateComments = userComments.filter(each => each.userID === loggedInUserID)
 
-    const publicTitles = titleList.filter(each => {
-        return each.userID === loggedInUserID
-    })
+    const publicTitles = titleList.filter(each => each.userID === loggedInUserID)
+
+    const favouriteTitle = titleList.filter(each => theUserFavouriteList.includes(each.id.toString()))
 
     const privateCommentsNodes = privateComments.map(each => {
         return (
@@ -41,6 +41,24 @@ function Profile({userComments, loggedInUserID, titleList}){
         )
     })
 
+    const favouriteTitleNodes = favouriteTitle.map(each => {
+        return (
+            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12">
+                    <Link to={`/forum/${each.id}`}>
+                        <li>
+                            {each.title}
+                        </li>
+                    </Link>
+                    <li>
+                        {each.content}
+                    </li>
+                </ul>
+
+        )
+    })
+
+
+
 
     function handleClick(showData){
         switch(showData){
@@ -51,7 +69,7 @@ function Profile({userComments, loggedInUserID, titleList}){
                 setNodesData(publicTitleNodes)
                 break;
             case "Favourite":
-                setNodesData("hi");
+                setNodesData(favouriteTitleNodes);
                 break;
         }
     }

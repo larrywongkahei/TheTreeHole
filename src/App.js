@@ -58,8 +58,6 @@ function App() {
     getdata()
   }, [])
 
-  console.log(usernames)
-
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
@@ -125,8 +123,8 @@ function App() {
     setUsername(newUserData)
   }
 
-  async function handleRemoveFavouriteFromUser(theUser, commentId){
-    const theFavouriteArray = removeCentainFavouriteFromUser(theUser, commentId)
+  async function handleRemoveFavouriteFromUser(theUser, titleId){
+    const theFavouriteArray = removeCentainFavouriteFromUser(theUser, titleId)
     const data = {
       'id' : theUser.id,
       'favourite' : theFavouriteArray
@@ -136,10 +134,11 @@ function App() {
     setUsername(newUserData)
   }
 
-  function removeCentainFavouriteFromUser(user, commentId){
+  function removeCentainFavouriteFromUser(user, titleId){
     const favouriteArray = user.favourite.split(",")
-    const newFavouriteArray = favouriteArray.filter(each => each !== commentId.toString())
+    const newFavouriteArray = favouriteArray.filter(each => each !== titleId.toString())
     const theFavouriteArray = newFavouriteArray.join(",")
+    console.log(theFavouriteArray)
     return theFavouriteArray
   }
 
@@ -175,8 +174,8 @@ function App() {
           <Route path="/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
           <Route path="/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
           <Route path="/introduction" element={<Introducion />} />
-          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions}/>} />
-          <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
+          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
+          <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
           <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
         </Routes>
         <TitleContainer titleList={titleList} />

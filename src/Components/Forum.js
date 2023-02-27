@@ -6,47 +6,15 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions }){
 
     const [textareaData, setTextAreaData] = useState("")
-    const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
-    const theUserFavouriteList = theUserFavourite.split(",")
     const { titleID } = useParams()
 
 
     function handleChange(e){
         setTextAreaData(e.target.value)
     }
-
-    function handleUpdateFavourite(userId, commentId, status){
-        const theUser = usernames.find(each => each.id === userId)
-        console.log(theUser)
-        const data = {
-            'id' : userId,
-            'favourite' : theUser.favourite + `${commentId},`
-        }
-        if (status === "add"){
-            handleAddFavouriteToUser(data)
-        }else{
-            handleRemoveFavouriteFromUser(theUser, commentId)
-        }
-    }
-
-    // function afterAddToFavourite(userId, commentId){
-    //     console.log(addedToFavourite)
-    //     const theUser = usernames.find(each => each.id === userId)
-    //     console.log(theUser)
-    //     const data = {
-    //         'id' : userId,
-    //         'favourite' : theUser.favourite + `${commentId},`
-    //     }
-    //     console.log(data)
-    //     if (addedToFavourite){
-    //         handleAddFavouriteToUser(data)
-    //     }else{
-    //         handleRemoveFavouriteFromUser(theUser, commentId)
-    //     }
-    // }
 
     function handleLike(id){
         const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
@@ -113,11 +81,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
        <div className="text-white text-center sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
             <img src={flower} className="rounded-full h-48 w-48 m-auto ml-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
-
-            {theUserFavouriteList.includes(each.id.toString()) ? 
-             < FcLike size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "remove")}/> 
-            : < FcLikePlaceholder size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "add")}/> }
-
                 <ul>
                     <li className=" mx-3 sm:pt-6 py-5">
                         {each.content}

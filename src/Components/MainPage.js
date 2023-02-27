@@ -1,15 +1,33 @@
 import React, { useState } from "react"
-import { CgProfile } from "react-icons/cg"
 import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
+import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
-function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions}) {
+
+function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
     const [showTitleForm, setShowTitleForm] = useState(false)
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
-    const [maxLetter, setMaxLetter] = useState(28)
+    const [maxLetter, setMaxLetter] = useState(23)
+
+    const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
+    const theUserFavouriteList = theUserFavourite.split(",")
+
+    function handleUpdateFavourite(userId, titleId, status){
+        const theUser = usernames.find(each => each.id === userId)
+        console.log(theUser)
+        const data = {
+            'id' : userId,
+            'favourite' : theUser.favourite + `${titleId},`
+        }
+        if (status === "add"){
+            handleAddFavouriteToUser(data)
+        }else{
+            handleRemoveFavouriteFromUser(theUser, titleId)
+        }
+    }
 
     const titleNodes = titleList.map(each => {
         const theComment = commentList.findLast(comment => comment.title === each.id)
@@ -17,14 +35,20 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
         return (
             <div className="grid justify-items grid-cols-6 grid-rows-3 mx-20 dark:bg-gray-700 rounded-md mb-5 md:mx-40 lg:mx-32 xl:mx-72">
                 <div className="sm:mt-2 sm:w-full sm:h-full col-span-2 row-span-2 border-r">
-                    {/* < CgProfile size={110} className="ml-12"/> */}
                     <img src={flower} className="rounded-full h-48 w-48 mx-auto"/>
                 </div>
                 <ul className="col-span-4 row-span-1 w-full">
-                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4">
-                        <Link to={`/forum/${each.id}`}>
-                        {each.title}
-                        </Link>
+                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4 grid grid-cols-2">
+                        <div className="my-auto">
+                            <Link to={`/forum/${each.id}`}>
+                            {each.title}
+                            </Link>
+                        </div>
+                        <div className="justify-self-end">
+                        {theUserFavouriteList.includes(each.id.toString()) ? 
+                        < FcLike size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "remove")}/> 
+                        : < FcLikePlaceholder size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "add")}/> }
+                        </div>
                     </li>
                 </ul>
                     {theComment? 
@@ -42,9 +66,9 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
     })
 
     function handleTitle(e){
-        if (e.target.value.length <= 28){
+        if (e.target.value.length <= 23){
             setTitle(e.target.value)
-            setMaxLetter(28 - e.target.value.length)
+            setMaxLetter(23 - e.target.value.length)
         }
     }
 
