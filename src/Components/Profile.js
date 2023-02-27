@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function Profile({userComments, loggedInUserID, titleList}){
     
-    const [showComment, setShowComment] = useState("")
+    const [nodesData, setNodesData] = useState()
 
     const privateComments = userComments.filter(each => {
         return each.userID === loggedInUserID
@@ -41,23 +41,42 @@ function Profile({userComments, loggedInUserID, titleList}){
         )
     })
 
+
     function handleClick(showData){
-        setShowComment(showData)
+        switch(showData){
+            case "Private":
+                setNodesData(privateCommentsNodes)
+                break;
+            case "Public":
+                setNodesData(publicTitleNodes)
+                break;
+            case "Favourite":
+                setNodesData("hi");
+                break;
+        }
     }
 
     return (
-        <div>
-            <div className="flex justify-center w-screen justify-items-stretch">
-                <button className="text-white border-r border-b px-6 w-[50%] h-24 hover:bg-gray-500" onClick={() => handleClick("Private")}>Private</button>
-                <button className="text-white border-b px-6 w-[50%] hover:bg-gray-500" onClick={() => handleClick("Public")}>Public</button>
+        <div className="">
+            <ul className="fixed right-0 w-[20%] pt-16 bg-black h-full">
+                <li>
+                    <button className="text-white border-y hover:bg-gray-500 w-full py-10" onClick={() => handleClick("Private")}>Private</button>
+                </li>
+                <li>
+                    <button className="text-white border-b hover:bg-gray-500 w-full py-10" onClick={() => handleClick("Public")}>Public</button>
+                </li>
+                <li>
+                    <button className="text-white border-b hover:bg-gray-500 w-full py-10" onClick={() => handleClick("Favourite")}>Favourite</button>
+                </li>
+                <li>
+                    <button className="text-white border-b hover:bg-gray-500 w-full py-10">Edit Profile</button>
+                </li>
+            </ul>
+            <div className="w-[80%]">
+                <div className="flex flex-col text-center gap-5 mt-5 mx-20">
+                    {nodesData}
+                </div>
             </div>
-            {showComment === "Private" ? 
-            <div className="flex flex-col text-center gap-5 mt-5 mx-20">
-                {privateCommentsNodes}
-            </div>
-            : <div className="flex flex-col text-center gap-5 mt-5 mx-20">
-                {publicTitleNodes}
-            </div>}
         </div>
     )
 }

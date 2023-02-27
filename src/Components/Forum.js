@@ -102,7 +102,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                             <FcLike size={20}/>
                         </li>
                     </div>
-                    <div className="flex pl-32">
+                    <div className="flex pl-20">
                         <li className="sm:pr-10 sm:mb-5 sm:">
                             {user.username}
                         </li>
