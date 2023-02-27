@@ -8,6 +8,7 @@ import Query from './Components/Query';
 import SigninPage from './Components/Signin';
 import Header from './Components/Header';
 import Rain2 from './videos/Rain2.mp4';
+import SunnyTree from './videos/Sunny_Tree.mp4'
 import Footer from './Components/Footer';
 import Sound from 'react-sound';
 import rainSound from './sounds/raining.mp3'
@@ -143,7 +144,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen pb-20">
-      {window.location.pathname !== "/" ? <video
+      {window.location.pathname === "/" ? <video
         src={Rain2}
         autoPlay
         muted
@@ -157,7 +158,22 @@ function App() {
           zIndex: "-1",
           objectFit:"cover",
         }}>
-      </video> : null}
+      </video> : 
+      <video
+      src={SunnyTree}
+        autoPlay
+        muted
+        style={{
+          height: "100%",
+          width: "100%",
+          top: "0",
+          right: "0",
+          padding: "none",
+          position: "fixed",
+          zIndex: "-1",
+          objectFit:"cover",
+        }}>>
+      </video>}
       <Sound
         url={rainSound}
         playStatus={playing ? Sound.status.PLAYING : Sound.status.STOPPED}
