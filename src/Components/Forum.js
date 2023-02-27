@@ -1,19 +1,25 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { BiLike, BiDislike }from "react-icons/bi"
-import  { FcLike } from "react-icons/fc"
 import flower from "../flower/flower.jpeg"
+import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
 
 function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions}){
 
     const [textareaData, setTextAreaData] = useState("")
+    const [addedToFavourite, setAddedToFavourite] = useState(false)
+
     const { titleID } = useParams()
 
 
     function handleChange(e){
         setTextAreaData(e.target.value)
+    }
+
+    function handleAddToFavourite(){
+        setAddedToFavourite(!addedToFavourite)
     }
 
     function handleLike(id){
@@ -79,9 +85,13 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
         })
        return( 
        <div className="text-white text-center sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
-            {/* < CgProfile size={90} className="sm:mx-1 sm:mt-1 sm:w-[25%] sm:h-full ml-32 "/> */}
             <img src={flower} className="rounded-full h-48 w-48 m-auto ml-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
+
+            {addedToFavourite ? 
+             < FcLike size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={handleAddToFavourite}/> 
+            : < FcLikePlaceholder size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={handleAddToFavourite}/> }
+
                 <ul>
                     <li className=" mx-3 sm:pt-16 py-5">
                         {each.content}
@@ -93,22 +103,22 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                         <li className="text-xl">
                             {thecommentInteraction.like}
                         </li> : 0}
-                        <li className="pt-1" onClick={() => handleLike(each.id)}>
-                            <BiLike size={20}/>
+                        <li className="pt-1">
+                            <BiLike size={20} className="hover:cursor-pointer"  onClick={() => handleLike(each.id)}/>
                         </li>
                         {thecommentInteraction? 
                         <li className="text-xl">
                             {thecommentInteraction.dislike}
                         </li> : 0}
-                        <li className="pt-1" onClick={() => handleDislike(each.id)}>
-                            <BiDislike size={20}/>
+                        <li className="pt-1">
+                            <BiDislike size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
                         </li>
                         {thecommentInteraction? 
                         <li className="text-xl">
                             {thecommentInteraction.love}
                         </li> : 0}
-                        <li className="pt-1" onClick={() => handleLove(each.id)}>
-                            <FcLike size={20}/>
+                        <li className="pt-1">
+                            <FcLike size={20}  className="hover:cursor-pointer" onClick={() => handleLove(each.id)}/>
                         </li>
                     </div>
                     <div className="flex pl-20">
