@@ -117,8 +117,10 @@ function App() {
     setPlaying(!playing)
   }
 
-  function handleAddToFavourite(){
-    
+  async function handleAddToFavourite(data){
+    await API.updateFavourite(data)
+    const newUserData = API.getLatestUsers
+    setUsername(newUserData)
   }
 
   return (
