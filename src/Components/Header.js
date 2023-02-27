@@ -14,14 +14,6 @@ function Header ({ loggedInStatus}) {
       }
     }, [loggedInStatus])
 
-    useEffect(() => {
-        if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/Signin' & loggedInStatus){
-            window.location.reload()
-        }else if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/signup' & loggedInStatus){
-            window.location.reload()
-        }
-    }, [window.location.href])
-
     function handleLogOut(){
         Navigate('/Signin')
         window.location.reload()
