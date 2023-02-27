@@ -138,7 +138,6 @@ function App() {
     const favouriteArray = user.favourite.split(",")
     const newFavouriteArray = favouriteArray.filter(each => each !== titleId.toString())
     const theFavouriteArray = newFavouriteArray.join(",")
-    console.log(theFavouriteArray)
     return theFavouriteArray
   }
 
