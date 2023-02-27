@@ -6,12 +6,12 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
 function Mainpage({ createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
+
     const [showTitleForm, setShowTitleForm] = useState(false)
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
     const [maxLetter, setMaxLetter] = useState(23)
-
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
 

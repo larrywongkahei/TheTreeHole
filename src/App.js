@@ -64,11 +64,13 @@ function App() {
     .then(res => {
       if (res){
         API.getLatestUsers()
-        .then(data => setUsername(data))
+        .then(data => {
+        setUsername(data)
         setLoggedInStatus(true)
         setLoggedInUserID(res)
-      }
-    })
+      })
+    }
+  })
   }
 
   async function Login(data){
@@ -76,9 +78,11 @@ function App() {
       .then(res => {
       if (res){
         API.getLatestUsers()
-        .then(data => setUsername(data))
+        .then(data => {
+          setUsername(data)
         setLoggedInStatus(true)
         setLoggedInUserID(res)
+      })
       }
   })
 }
