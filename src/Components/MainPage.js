@@ -5,7 +5,7 @@ import flower from "../flower/flower.jpeg"
 import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
-function Mainpage({createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
+function Mainpage({ createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
     const [showTitleForm, setShowTitleForm] = useState(false)
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)

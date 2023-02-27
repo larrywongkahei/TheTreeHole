@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function Profile({userComments, loggedInUserID, titleList, usernames }){
+function Profile({ userComments, loggedInUserID, titleList, usernames }){
     
     const [nodesData, setNodesData] = useState()
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
