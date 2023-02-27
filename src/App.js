@@ -44,7 +44,7 @@ function App() {
       const privateComments = await fetchUserComments.json()
       const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
       const CommentInteractionData = await fetchCommentInteraction.json()
-      
+
       // Set the data fetched to the State
       Promise.all(titlesData, commentsData, usernames, privateComments)
       .then(
@@ -57,7 +57,7 @@ function App() {
     }
     getdata()
   }, [])
-
+  
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
