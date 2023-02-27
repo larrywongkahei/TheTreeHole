@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg"
 import { BiLogOut } from "react-icons/bi"
 import { HiOutlineHome } from "react-icons/hi"
 
-function Header ({ loggedInStatus }) {
+function Header ({ loggedInStatus}) {
     const Navigate = useNavigate()
 
     useEffect(() => {
