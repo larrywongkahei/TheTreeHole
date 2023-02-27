@@ -58,6 +58,8 @@ function App() {
     getdata()
   }, [])
 
+  console.log(usernames)
+
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
@@ -117,9 +119,22 @@ function App() {
     setPlaying(!playing)
   }
 
-  async function handleAddToFavourite(data){
+  async function handleAddFavouriteToUser(data){
     await API.updateFavourite(data)
-    const newUserData = API.getLatestUsers
+    const newUserData = await API.getLatestUsers()
+    setUsername(newUserData)
+  }
+
+  async function handleRemoveFavouriteFromUser(theUser, commentId){
+    const favouriteArray = theUser.favourite.split(",")
+    const newFavouriteArray = favouriteArray.filter(each => each !== commentId.toString())
+    const theFavouriteArray = newFavouriteArray.join(",")
+    const data = {
+      'id' : theUser.id,
+      'favourite' : theFavouriteArray
+    }
+    await API.updateFavourite(data)
+    const newUserData = await API.getLatestUsers()
     setUsername(newUserData)
   }
 
@@ -157,7 +172,7 @@ function App() {
           <Route path="/introduction" element={<Introducion />} />
           <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions}/>} />
           <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID}/>} />
-          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions}/>} />
+          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />} />
         </Routes>
         <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>
