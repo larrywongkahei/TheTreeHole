@@ -18,28 +18,37 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     function handleLike(id){
         const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
-        const data = {
-            'id' : id,
-            'like' : thecommentInteraction[0].like += 1,
+        if (loggedInStatus){
+            const data = {
+                'id' : id,
+                'like' : thecommentInteraction[0].like += 1,
+            }
+           updateCommentInteractions(data)
         }
-       updateCommentInteractions(data)
+
     }
 
     function handleDislike(id){
         const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
-        const data = {
-            'id' : id,
-            'dislike' : thecommentInteraction[0].dislike += 1
-           }
-        updateCommentInteractions(data)    }
+        if (loggedInStatus){
+            const data = {
+                'id' : id,
+                'dislike' : thecommentInteraction[0].dislike += 1
+               }
+            updateCommentInteractions(data) 
+        }   
+    }
 
     function handleLove(id){
         const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
-        const data = {
-            'id' : id,
-            'love' : thecommentInteraction[0].love += 1,
-           }
-           updateCommentInteractions(data)    }
+        if (loggedInStatus){
+            const data = {
+                'id' : id,
+                'love' : thecommentInteraction[0].love += 1,
+               }
+               updateCommentInteractions(data)
+        }
+    }
 
     async function handleSubmit(e){
         e.preventDefault()
