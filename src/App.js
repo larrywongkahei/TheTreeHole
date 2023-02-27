@@ -162,6 +162,7 @@ function App() {
       <video
       src={SunnyTree}
         autoPlay
+        loop
         muted
         style={{
           height: "100%",
@@ -172,7 +173,7 @@ function App() {
           position: "fixed",
           zIndex: "-1",
           objectFit:"cover",
-        }}>>
+        }}>
       </video>}
       <Sound
         url={rainSound}

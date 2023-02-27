@@ -38,8 +38,8 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     <img src={flower} className="rounded-full h-48 w-48 mx-auto"/>
                 </div>
                 <ul className="col-span-4 row-span-1 w-full">
-                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4 grid grid-cols-2">
-                        <div className="my-auto">
+                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4 grid grid-cols-4">
+                        <div className="my-auto col-span-3">
                             <Link to={`/forum/${each.id}`}>
                             {each.title}
                             </Link>
