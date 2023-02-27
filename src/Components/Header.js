@@ -16,7 +16,7 @@ function Header ({ loggedInStatus }) {
 
     function handleLogOut(){
         window.location.replace('/TheTreeHole/#/Signin')
-        window.location.reload(false)
+        window.location.reload()
     }
 
 
