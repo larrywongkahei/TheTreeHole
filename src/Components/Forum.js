@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { BiLike, BiDislike }from "react-icons/bi"
 import flower from "../flower/flower.jpeg"
-import { FcLikePlaceholder, FcLike } from "react-icons/fc"
+import { FcLike } from "react-icons/fc"
 
 
 
