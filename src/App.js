@@ -60,11 +60,13 @@ function App() {
   }, [])
 
     if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/Signin' & loggedInStatus){
+      console.log('reload')
         window.location.reload()
     }else if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/signup' & loggedInStatus){
+      console.log('reload')
         window.location.reload()
     }
-    
+
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
