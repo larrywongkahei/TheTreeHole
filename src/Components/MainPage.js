@@ -80,7 +80,6 @@ function Mainpage({createTitle, titleList, createComment, commentList, createPri
             await createComment(data)
             await createCommentInteractions()
         }
-        console.log("added")
         setTextAreaData("")
         setTitle("")
         setKeepPrivate(true)

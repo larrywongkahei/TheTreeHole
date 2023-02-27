@@ -57,7 +57,7 @@ function App() {
     }
     getdata()
   }, [])
-  
+
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
@@ -115,6 +115,10 @@ function App() {
     
   function handleplaying() {
     setPlaying(!playing)
+  }
+
+  function handleAddToFavourite(){
+    
   }
 
   return (

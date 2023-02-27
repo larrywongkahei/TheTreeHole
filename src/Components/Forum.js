@@ -93,7 +93,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             : < FcLikePlaceholder size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={handleAddToFavourite}/> }
 
                 <ul>
-                    <li className=" mx-3 sm:pt-16 py-5">
+                    <li className=" mx-3 sm:pt-6 py-5">
                         {each.content}
                     </li>
                 </ul>

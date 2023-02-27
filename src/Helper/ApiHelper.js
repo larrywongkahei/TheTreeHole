@@ -85,6 +85,16 @@
       })
   },
 
+    updateFavourite(data){
+      return fetch('https://thetreeholebackend.herokuapp.com/api/Create', {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type' : 'application/json'
+        }
+      })
+    },
+
       createPrivateComments(data){
         return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments', {
           method: "post",
@@ -119,7 +129,7 @@
       getLatestUsers(){
         return fetch('https://thetreeholebackend.herokuapp.com/api/Create')
         .then(res => res.json())
-      }
+      },
   
   }
   
