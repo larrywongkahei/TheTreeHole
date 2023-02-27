@@ -6,11 +6,11 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser}){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }){
 
     const [textareaData, setTextAreaData] = useState("")
-    const theUserFavouriteList = usernames.find(each => each.id === loggedInUserID).favourite
-    
+    const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
+    const theUserFavouriteList = theUserFavourite.split(",")
     const { titleID } = useParams()
 
 
@@ -19,7 +19,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     }
 
     function handleUpdateFavourite(userId, commentId, status){
-        setAddedToFavourite(!addedToFavourite)
         const theUser = usernames.find(each => each.id === userId)
         console.log(theUser)
         const data = {
@@ -115,7 +114,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             <img src={flower} className="rounded-full h-48 w-48 m-auto ml-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
 
-            {addedToFavourite ? 
+            {theUserFavouriteList.includes(each.id.toString()) ? 
              < FcLike size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "remove")}/> 
             : < FcLikePlaceholder size={30} className="justify-self-end m-3 hover:cursor-pointer" onClick={() => handleUpdateFavourite(loggedInUserID, each.id, "add")}/> }
 
