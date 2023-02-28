@@ -59,13 +59,16 @@ function App() {
     getdata()
   }, [])
 
-    if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/Signin' & loggedInStatus){
-      console.log('reload')
-        window.location.reload()
-    }else if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/signup' & loggedInStatus){
-      console.log('reload')
-        window.location.reload()
-    }
+    useEffect(() => {
+      if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/Signin' & loggedInStatus){
+        console.log('reload')
+          window.location.reload()
+      }else if(window.location.href === 'https://larrywongkahei.github.io/TheTreeHole/#/signup' & loggedInStatus){
+        console.log('reload')
+          window.location.reload()
+      }
+  
+    }, [window.location.href])
 
   async function createUser(data){
     await API.createUser(data)
