@@ -59,6 +59,11 @@ function App() {
     getdata()
   }, [])
 
+  setInterval(() => {
+    updateComments()
+    updateTitles()
+  }, 100000)
+
   async function createUser(data){
     await API.createUser(data)
     .then(res => {
@@ -104,6 +109,16 @@ function App() {
     const newTitles = await API.getTitles()
     setTitles(newTitles)
 
+  }
+
+  async function updateComments(){
+    const newComments = await API.getComments()
+    setComments(newComments)
+  }
+
+  async function updateTitles(){
+    const newTitles = await API.getTitles()
+    setTitles(newTitles)
   }
 
   async function createCommentInteractions(){
