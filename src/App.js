@@ -1,7 +1,5 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import NavBar from './Components/NavBar';
-import TitleContainer from './Components/TitleContainer';
 import { HashRouter, Routes, Route } from "react-router-dom";
 import SignupPage from './Components/Signup';
 import Query from './Components/Query';
@@ -202,7 +200,6 @@ function App() {
       />
       <HashRouter>
         <Header loggedInStatus={loggedInStatus}/>
-        <NavBar />
         <Routes>
           <Route path="/" element={<LandingPage handlePlaying={handleplaying} />} />
           <Route path="/query" element={<Query />} />
@@ -213,7 +210,6 @@ function App() {
           <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
           <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
         </Routes>
-        <TitleContainer titleList={titleList} />
         <Footer className="mt-12"/>
       </HashRouter>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
@@ -14,6 +14,19 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     const [maxLetter, setMaxLetter] = useState(23)
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
+
+    useEffect(() => {
+
+        if(!usernames){
+            return (
+                <h1 className="text-xl text-center pt-40">
+                    Loading
+                </h1>
+            )
+        }
+
+    }, [usernames])
+
 
     function handleUpdateFavourite(userId, titleId, status){
         const theUser = usernames.find(each => each.id === userId)
