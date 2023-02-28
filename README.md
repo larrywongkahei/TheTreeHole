@@ -6,12 +6,18 @@
 A web application build with React Frontend and Django Backend that allows users to release emotions and stress. 
 
 ## Features
-* Edit profile
+
 * Add titles to favourite
 * Check all the favourite story
 * Choose to post private story and public story
 * Interact with comments by pressing the Like, Love and Dislike button
 * Check all the private and public stories the user posted
+
+## Features to be added
+
+* Edit profile
+* Direct Message
+* Upload image as icon
 
 
 ## Tools
