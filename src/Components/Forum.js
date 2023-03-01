@@ -78,11 +78,11 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             return user.id === each.userID
         })
        return( 
-       <div className="text-white text-center sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
-            <img src={flower} className="rounded-full h-48 w-48 m-auto ml-3"/>
+       <div className="text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
+            <img src={flower} className="rounded-full h-24 w-24 m-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
                 <ul>
-                    <li className=" mx-3 sm:pt-6 py-5">
+                    <li className=" mr-3 ml-8 sm:pt-6 py-5">
                         {each.content}
                     </li>
                 </ul>

@@ -29,7 +29,7 @@ function Header ({ loggedInStatus}) {
     }
 
     return (
-        <div className="flex font-bold text-xl font-mono bg-black text-white sticky top-0 justify-end py-10">
+        <div className="flex font-bold text-xl font-mono bg-gray-800 text-white sticky top-0 justify-end py-10">
 
             {loggedInStatus ? 
             <div>

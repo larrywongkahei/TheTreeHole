@@ -94,12 +94,13 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         const theComment = commentList.findLast(comment => comment.title === each.id)
         const theUser = usernames.find(user => user.id === each.userID)
         return (
-            <div className="grid justify-items grid-cols-6 grid-rows-3 mx-20 dark:bg-gray-700 rounded-md mb-5 md:mx-40 lg:mx-32 xl:mx-72">
-                <div className="sm:mt-2 sm:w-full sm:h-full col-span-2 row-span-2 border-r">
-                    <img src={flower} alt="" className="rounded-full h-48 w-48 mx-auto"/>
+            // md:mx-40 lg:mx-32 xl:mx-72
+            <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 mx-60">
+                <div className="sm:my-2 sm:w-full sm:h-full col-span-1 ">
+                    <img src={flower} alt="" className="rounded-full h-24 w-24 mx-auto"/>
                 </div>
-                <ul className="col-span-4 row-span-1 w-full">
-                    <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4 grid grid-cols-4">
+                <ul className="col-span-4 w-full">
+                    <li className="font-bold text-2xl font-mono pb-1 pt-3 text-ellipsis overflow-hidden px-4 grid grid-cols-4">
                         <div className="my-auto col-span-3">
                             <Link to={`/forum/${each.id}`}>
                             {each.title}
@@ -112,16 +113,13 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                         </div>
                     </li>
                 </ul>
-                    {theComment? 
-                    <div className="col-start-3 col-span-4 row-span-2">
-                        <p className="text-gray-200 italic breack-words px-6 pb-5 sm:h-12 ">
+                    {/* {theComment? 
+                    <div className="col-start-3 col-span-4">
+                        <p className="text-gray-200 italic breack-words text-ellipsis overflow-hidden truncate px-6 pb-1 sm:h-12 ">
                             {each.content}
                         </p>
                     </div>
-                        : null}
-                <p className="col-start-1 col-span-2 pt-6 text-xl font-serif border-r">
-                        {theUser.username}
-                </p>
+                        : null} */}
             </div>
         )
     })
