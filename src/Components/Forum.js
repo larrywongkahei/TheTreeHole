@@ -6,7 +6,7 @@ import { FcLike } from "react-icons/fc"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, updateCommentInteractions, createCommentInteractions }){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, putCommentInteractions, createCommentInteractions }){
 
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
@@ -23,7 +23,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'id' : id,
                 'like' : thecommentInteraction[0].like += 1,
             }
-           updateCommentInteractions(data)
+           putCommentInteractions(data)
         }
 
     }
@@ -35,7 +35,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'id' : id,
                 'dislike' : thecommentInteraction[0].dislike += 1
                }
-            updateCommentInteractions(data) 
+            putCommentInteractions(data) 
         }   
     }
 
@@ -46,7 +46,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'id' : id,
                 'love' : thecommentInteraction[0].love += 1,
                }
-               updateCommentInteractions(data)
+               putCommentInteractions(data)
         }
     }
 
