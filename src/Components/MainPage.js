@@ -75,7 +75,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     function getOnlyFivePage(){
         if (currentPage - 2 <= 1){
-            console.log(currentPage)
             return allPageNumbersList.slice(0, 5)
         }else if (currentPage + 2 >= totalPage){
             return allPageNumbersList.slice(-5)
