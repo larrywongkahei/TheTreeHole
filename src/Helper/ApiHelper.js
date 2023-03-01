@@ -75,7 +75,7 @@
         })
     },
 
-    updateCommentInteractions(data) {
+    putCommentInteractions(data) {
       return fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions', {
           method: "put",
           body: JSON.stringify(data),

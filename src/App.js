@@ -57,6 +57,7 @@ function App() {
     getdata()
   }, [])
 
+  // To update the state every 50 seconds
   setInterval(() => {
     updateComments()
     updateTitles()
@@ -91,8 +92,8 @@ function App() {
   })
 }
 
-  async function updateCommentInteractions(data){
-    await API.updateCommentInteractions(data)
+  async function putCommentInteractions(data){
+    await API.putCommentInteractions(data)
     const newCommentinteractiion = await API.getCommentInteractions()
     setAllCommentInteractions(newCommentinteractiion)
   }
@@ -208,7 +209,7 @@ function App() {
           <Route path="/introduction" element={<Introducion />} />
           <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />} />
           <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
-          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} updateCommentInteractions={updateCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
+          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} putCommentInteractions={putCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
         </Routes>
         <Footer className="mt-12"/>
       </HashRouter>
