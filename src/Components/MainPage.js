@@ -14,6 +14,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     const [currentPage, setCurrentPage] = useState(1)
     const [titleListToShow, setTitleListToShow] = useState(titleList.slice(0, 5))
     const [maxLetter, setMaxLetter] = useState(23)
+    const [maxContentLetter, setMaxContentLetter] = useState(2000)
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
 
@@ -130,14 +131,16 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }
     }
 
+    function handleContent(e){
+        if (e.target.value.length <= 2000){
+            setTextAreaData(e.target.value)
+            setMaxContentLetter(2000 - e.target.value.length)
+        }
+    }
+
 
     function handleTitleFunction(){
         setShowTitleForm(!showTitleForm)
-
-    }
-
-    function handleChange(e){
-        setTextAreaData(e.target.value)
 
     }
 
@@ -194,8 +197,9 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                         <input type="text" onChange={handleTitle} value={title}  className="w-full py-1 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Enter your title"/>
                         <label className="text-gray-600">{maxLetter}</label>
                     </div>
-                    <div className="mx-5 px-4 py-2 mb-4 bg-white rounded-b-lg dark:bg-gray-800">
-                        <textarea onChange={handleChange} value={textAreaData} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none" placeholder="Share Your Story with us"/>
+                    <div className="mx-5 pl-4 py-2 pr-10 bg-white rounded-b-lg dark:bg-gray-800 flex gap-4">
+                        <textarea onChange={handleContent} value={textAreaData} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none pb-32" placeholder="Share Your Story with us"/>
+                        <label className="text-gray-600">{maxContentLetter}</label>
                     </div>
                     <div className="flex items-center justify-end px-3 py-2 border-t dark:border-gray-600">    
                         <button type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Submit</button>

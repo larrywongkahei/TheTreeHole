@@ -67,15 +67,15 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     return (
         <div className="">
-            <ul className="fixed right-0 w-[15%] bg-black opacity-80 h-full">
+            <ul className="fixed right-0 w-[15%] bg-black opacity-80 h-full flex flex-col">
                 <li>
-                    <button className="text-white border-y hover:bg-gray-500 w-full py-14" onClick={() => handleClick("Private")}>Private</button>
+                    <button className="text-white border-y hover:bg-gray-500 w-full py-16" onClick={() => handleClick("Private")}>Private</button>
                 </li>
                 <li>
-                    <button className="text-white border-b hover:bg-gray-500 w-full py-14" onClick={() => handleClick("Public")}>Public</button>
+                    <button className="text-white border-b hover:bg-gray-500 w-full py-16" onClick={() => handleClick("Public")}>Public</button>
                 </li>
                 <li>
-                    <button className="text-white border-b hover:bg-gray-500 w-full py-14" onClick={() => handleClick("Favourite")}>Favourite</button>
+                    <button className="text-white border-b hover:bg-gray-500 w-full py-16" onClick={() => handleClick("Favourite")}>Favourite</button>
                 </li>
                 <li>
                     <button className="text-white border-b hover:bg-gray-500 w-full py-16">Edit Profile</button>
