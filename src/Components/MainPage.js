@@ -201,7 +201,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                         <textarea onChange={handleContent} value={textAreaData} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none pb-32" placeholder="Share Your Story with us"/>
                         <label className="text-gray-600">{maxContentLetter}</label>
                     </div>
-                    <div className="flex items-center justify-end px-3 py-2 border-t dark:border-gray-600">    
+                    <div className="flex items-center justify-end px-5 py-2 border-t dark:border-gray-600">    
                         <button type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Submit</button>
                     </div>
                 </div>

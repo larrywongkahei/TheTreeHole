@@ -8,13 +8,19 @@ import { FcLike } from "react-icons/fc"
 
 function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, putCommentInteractions, createCommentInteractions }){
 
+    const [maxContentLetter, setMaxContentLetter] = useState(2000)
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
 
 
     function handleChange(e){
-        setTextAreaData(e.target.value)
+        if (e.target.value.length <= 2000){
+            setTextAreaData(e.target.value)
+            setMaxContentLetter(2000 - e.target.value.length)
+        }
     }
+
+
 
     function handleLike(id){
         const thecommentInteraction = allCommentInteractions.filter(each => each.id === id)
@@ -135,8 +141,9 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             {loggedInStatus ? 
             <form className="flex justify-center pt-16 mx-5 md:mx-40 lg:mx-32 xl:mx-72" onSubmit={handleSubmit}>
                 <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                    <div className="mx-5 px-4 py-2 my-4 bg-white rounded-lg dark:bg-gray-800">
+                    <div className="mx-5 px-4 py-2 my-4 pr-14 bg-white rounded-lg dark:bg-gray-800 flex gap-4">
                         <textarea cols={5} rows={5} onChange={handleChange} value={textareaData} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none" placeholder="Give them some advise!!" />
+                        <label className="text-gray-600">{maxContentLetter}</label>
                     </div>
                     <div className="flex items-center justify-end px-3 py-2 border-t dark:border-gray-600">
                         <button type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">Comment</button>
