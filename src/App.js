@@ -24,7 +24,7 @@ function App() {
   const [commentList, setComments] = useState([])
   const [playing, setPlaying] = useState(false)
   const [usernames, setUsername] = useState({})
-  const [userComments, setUserComments] = useState([])
+  const [privateTitlesList, setPrivateTitles] = useState([])
   const [loggedInUserID, setLoggedInUserID] = useState({})
   const [loggedInStatus, setLoggedInStatus] = useState(false)
   const [allCommentInteractions, setAllCommentInteractions] = useState([])
@@ -39,18 +39,18 @@ function App() {
       const commentsData = await fetchComments.json()
       const fetchUsernames = await fetch('https://thetreeholebackend.herokuapp.com/api/Create');
       const usernames = await fetchUsernames.json()
-      const fetchUserComments = await fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments');
-      const privateComments = await fetchUserComments.json()
+      const fetchPrivateTitles = await fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments');
+      const privateTitles = await fetchPrivateTitles.json()
       const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
       const CommentInteractionData = await fetchCommentInteraction.json()
 
       // Set the data fetched to the State
-      Promise.all(titlesData, commentsData, usernames, privateComments)
+      Promise.all(titlesData, commentsData, usernames, privateTitles)
       .then(
       setTitles(titlesData),
       setComments(commentsData),
       setUsername(usernames),
-      setUserComments(privateComments),
+      setPrivateTitles(privateTitles),
       setAllCommentInteractions(CommentInteractionData)
       )
     }
@@ -63,6 +63,31 @@ function App() {
     updateTitles()
     console.log("Updated")
   }, 50000)
+
+
+
+  // POST
+
+  async function createPrivateTitles(data){
+    await API.createPrivateTitles(data)
+    updatePrivateTitles()
+  }
+
+  async function createCommentInteractions(){
+    await API.createCommentInteractions()
+    updateCommentInteractions()
+  }
+
+  async function createComment(data){
+    await API.createComment(data)
+    updateComments()
+  }
+
+  async function createTitle(data){
+    await API.createTitle(data)
+    updateTitles()
+  }
+    
 
   async function createUser(data){
     await API.createUser(data)
@@ -92,23 +117,18 @@ function App() {
   })
 }
 
+
+  // PUT
   async function putCommentInteractions(data){
     await API.putCommentInteractions(data)
-    const newCommentinteractiion = await API.getCommentInteractions()
-    setAllCommentInteractions(newCommentinteractiion)
+    updateCommentInteractions()
   }
   
-  async function createPrivateComments(data){
-    await API.createPrivateComments(data)
-    const newPrivateComments = await API.getPrivateComments()
-    setUserComments(newPrivateComments)
-  }
 
-  async function createTitle(data){
-    await API.createTitle(data)
-    await updateTitles()
 
-  }
+
+  // GET
+  // Update date after posting or putting to database.
 
   async function updateComments(){
     const newComments = await API.getComments()
@@ -120,18 +140,17 @@ function App() {
     setTitles(newTitles)
   }
 
-  async function createCommentInteractions(){
-    await API.createCommentInteractions()
+  async function updatePrivateTitles(){
+    const newPrivateTitles = await API.getPrivateTitles()
+    setPrivateTitles(newPrivateTitles)
+  }
+
+  async function updateCommentInteractions(){
     const newCommentinteractiion = await API.getCommentInteractions()
     setAllCommentInteractions(newCommentinteractiion)
   }
 
-  async function createComment(data){
-    await API.createComment(data)
-    const newComments = await API.getComments()
-    setComments(newComments)
-  }
-    
+
   function handleplaying() {
     setPlaying(!playing)
   }
@@ -207,8 +226,8 @@ function App() {
           <Route path="/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
           <Route path="/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
           <Route path="/introduction" element={<Introducion />} />
-          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateComments={createPrivateComments} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />} />
-          <Route path="/profile" element={<Profile titleList={titleList} userComments={userComments} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
+          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateTitles={createPrivateTitles} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />} />
+          <Route path="/profile" element={<Profile titleList={titleList} privateTitlesList={privateTitlesList} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
           <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} putCommentInteractions={putCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
         </Routes>
         <Footer className="mt-12"/>

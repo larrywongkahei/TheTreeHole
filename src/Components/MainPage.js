@@ -5,7 +5,7 @@ import flower from "../flower/flower.jpeg"
 import { FcLikePlaceholder, FcLike } from "react-icons/fc"
 
 
-function Mainpage({ createTitle, titleList, createComment, commentList, createPrivateComments, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
+function Mainpage({ createTitle, titleList, createComment, commentList, createPrivateTitles, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
 
     const [showTitleForm, setShowTitleForm] = useState(false)
     const [textAreaData, setTextAreaData] = useState("")
@@ -150,7 +150,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }
 
         if(keepPrivate){
-            await createPrivateComments(data)
+            await createPrivateTitles(data)
         }else{
             await createTitle(data)
             await createComment(data)

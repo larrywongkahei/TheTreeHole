@@ -95,7 +95,7 @@
       })
     },
 
-      createPrivateComments(data){
+      createPrivateTitles(data){
         return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments', {
           method: "post",
           body: JSON.stringify(data),
@@ -121,7 +121,7 @@
         .then(res => res.json())
       },
   
-      getPrivateComments(){
+      getPrivateTitles(){
         return fetch('https://thetreeholebackend.herokuapp.com/api/PrivateComments')
         .then(res => res.json())
       },

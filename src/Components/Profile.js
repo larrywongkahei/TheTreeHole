@@ -1,19 +1,19 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function Profile({ userComments, loggedInUserID, titleList, usernames }){
+function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
     
     const [nodesData, setNodesData] = useState()
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
 
-    const privateComments = userComments.filter(each => each.userID === loggedInUserID)
+    const privateTitles = privateTitlesList.filter(each => each.userID === loggedInUserID)
 
     const publicTitles = titleList.filter(each => each.userID === loggedInUserID)
 
     const favouriteTitle = titleList.filter(each => theUserFavouriteList.includes(each.id.toString()))
 
-    const privateCommentsNodes = privateComments.map(each => {
+    const privateTitlesNodes = privateTitles.map(each => {
         return (
                 <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 rounded-md lg:mx-80 md:mx-12">
                     <li>
@@ -63,7 +63,7 @@ function Profile({ userComments, loggedInUserID, titleList, usernames }){
     function handleClick(showData){
         switch(showData){
             case "Private":
-                setNodesData(privateCommentsNodes)
+                setNodesData(privateTitlesNodes)
                 break;
             case "Public":
                 setNodesData(publicTitleNodes)
