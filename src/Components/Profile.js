@@ -34,9 +34,6 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
                             {each.title}
                         </li>
                     </Link>
-                    <li>
-                        {each.content}
-                    </li>
                 </ul>
         )
     })
@@ -49,9 +46,6 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
                             {each.title}
                         </li>
                     </Link>
-                    <li>
-                        {each.content}
-                    </li>
                 </ul>
 
         )
