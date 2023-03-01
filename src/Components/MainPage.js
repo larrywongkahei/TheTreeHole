@@ -65,7 +65,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }else if (currentPage === 1){
             setTitleListToShow(titleList.slice(0, 5))
         }
-
     }
 
     const totalPage = Math.ceil(titleList.length / 5)
