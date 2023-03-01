@@ -60,7 +60,8 @@ function App() {
   setInterval(() => {
     updateComments()
     updateTitles()
-  }, 100000)
+    console.log("Updated")
+  }, 50000)
 
   async function createUser(data){
     await API.createUser(data)
