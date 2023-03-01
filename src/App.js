@@ -104,8 +104,7 @@ function App() {
 
   async function createTitle(data){
     await API.createTitle(data)
-    const newTitles = await API.getTitles()
-    setTitles(newTitles)
+    await updateTitles()
 
   }
 

@@ -11,13 +11,17 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
     const [titleListToShow, setTitleListToShow] = useState(titleList.slice(0, 5))
     const [maxLetter, setMaxLetter] = useState(23)
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
 
     useEffect(() => {
+        updatePage()
+    }, [titleList])
 
+    useEffect(() => {
         if(!usernames){
             return (
                 <h1 className="text-5xl text-center pt-40">
@@ -43,14 +47,22 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     }
 
     function handlePageChange(page){
-        console.log(page)
-        console.log("Turn Page")
+        setCurrentPage(page)
         if(page !== 1 & page <= totalPage){
-            setCurrentPage(page)
             const startPoint = 5 * (page - 1)
             const endPoint = 5 * page
             setTitleListToShow(titleList.slice(startPoint, endPoint))
         }else if (page === 1){
+            setTitleListToShow(titleList.slice(0, 5))
+        }
+    }
+
+    function updatePage(){
+        if(currentPage !== 1 & currentPage <= totalPage){
+            const startPoint = 5 * (currentPage - 1)
+            const endPoint = 5 * currentPage
+            setTitleListToShow(titleList.slice(startPoint, endPoint))
+        }else if (currentPage === 1){
             setTitleListToShow(titleList.slice(0, 5))
         }
 
