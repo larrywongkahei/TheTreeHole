@@ -68,13 +68,23 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     }
 
     const totalPage = Math.ceil(titleList.length / 5)
-    const pageNumbersList = []
+    const allPageNumbersList = []
     for(let i = 1;i <= totalPage; i++){
-        pageNumbersList.push(i)
+        allPageNumbersList.push(i)
     }
-    const pageNumbers = pageNumbersList.map(each => {
+
+    function getOnlyFivePage(){
+        if (currentPage - 2 <= 1){
+            console.log(currentPage)
+            return allPageNumbersList.slice(0, 5)
+        }else if (currentPage + 2 >= totalPage){
+            return allPageNumbersList.slice(-5)
+        }
+        return allPageNumbersList.slice(currentPage - 2, currentPage + 2)
+    }
+    const pageNumbers = getOnlyFivePage().map(each => {
         return (
-            <p onClick={() => handlePageChange(each)}>
+            <p onClick={() => handlePageChange(each)} className="p-1">
                 {each}
             </p>
         )
@@ -202,8 +212,8 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     </div>
                 </div> 
             </div>}
-            {pageNumbersList.length <= 5 ?
-            <div className="flex gap-3 text-white justify-center hover:cursor-pointer">     
+            {allPageNumbersList.length <= 10 ?
+            <div className="flex gap-2 text-white justify-center hover:cursor-pointer mx-auto">     
                 {pageNumbers}
             </div> : null}
         </div>
