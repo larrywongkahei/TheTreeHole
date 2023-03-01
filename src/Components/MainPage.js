@@ -11,8 +11,8 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
+    const [titleListToShow, setTitleListToShow] = useState(titleList.slice(0, 5))
     const [maxLetter, setMaxLetter] = useState(23)
-    const [page, setPage] = useState(1)
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
     const theUserFavouriteList = theUserFavourite.split(",")
 
@@ -20,7 +20,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
         if(!usernames){
             return (
-                <h1 className="text-xl text-center pt-40">
+                <h1 className="text-5xl text-center pt-40">
                     Loading
                 </h1>
             )
@@ -31,7 +31,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     function handleUpdateFavourite(userId, titleId, status){
         const theUser = usernames.find(each => each.id === userId)
-        console.log(theUser)
         const data = {
             'id' : userId,
             'favourite' : theUser.favourite + `${titleId},`
@@ -43,13 +42,40 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }
     }
 
-    const titleNodes = titleList.map(each => {
+    function handlePageChange(page){
+        console.log(page)
+        console.log("Turn Page")
+        if(page !== 1 & page <= totalPage){
+            setCurrentPage(page)
+            const startPoint = 5 * (page - 1)
+            const endPoint = 5 * page
+            setTitleListToShow(titleList.slice(startPoint, endPoint))
+        }else if (page === 1){
+            setTitleListToShow(titleList.slice(0, 5))
+        }
+
+    }
+
+    const totalPage = Math.ceil(titleList.length / 5)
+    const pageNumbersList = []
+    for(let i = 1;i <= totalPage; i++){
+        pageNumbersList.push(i)
+    }
+    const pageNumbers = pageNumbersList.map(each => {
+        return (
+            <p onClick={() => handlePageChange(each)}>
+                {each}
+            </p>
+        )
+    })
+
+    const titleNodes = titleListToShow.map(each => {
         const theComment = commentList.findLast(comment => comment.title === each.id)
         const theUser = usernames.find(user => user.id === each.userID)
         return (
             <div className="grid justify-items grid-cols-6 grid-rows-3 mx-20 dark:bg-gray-700 rounded-md mb-5 md:mx-40 lg:mx-32 xl:mx-72">
                 <div className="sm:mt-2 sm:w-full sm:h-full col-span-2 row-span-2 border-r">
-                    <img src={flower} className="rounded-full h-48 w-48 mx-auto"/>
+                    <img src={flower} alt="" className="rounded-full h-48 w-48 mx-auto"/>
                 </div>
                 <ul className="col-span-4 row-span-1 w-full">
                     <li className="font-bold text-2xl font-mono pb-5 pt-3 text-ellipsis overflow-hidden border-b px-4 grid grid-cols-4">
@@ -158,13 +184,17 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     </div>
                 </div>
             </form> :
+            <div>
                 <div>
-                    <div>
-                        <div className="text-white py-3 sm:mx-20">
-                            {titleNodes}
-                        </div>
-                    </div> 
-                </div>}
+                    <div className="text-white py-3 sm:mx-20">
+                        {titleNodes}
+                    </div>
+                </div> 
+            </div>}
+            {pageNumbersList.length <= 5 ?
+            <div className="flex gap-3 text-white justify-center hover:cursor-pointer">     
+                {pageNumbers}
+            </div> : null}
         </div>
     )
 }
