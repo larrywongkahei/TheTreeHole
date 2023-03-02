@@ -221,14 +221,63 @@ function App() {
       <HashRouter>
         <Header loggedInStatus={loggedInStatus}/>
         <Routes>
-          <Route path="/" element={<LandingPage handlePlaying={handleplaying} />} />
-          <Route path="/query" element={<Query />} />
-          <Route path="/signup" element={<SignupPage createUser={createUser} loggedInStatus={loggedInStatus}/>} />
-          <Route path="/signin" element={<SigninPage Login={Login} loggedInStatus={loggedInStatus}/>} />
-          <Route path="/introduction" element={<Introducion />} />
-          <Route path="/home" element={<MainPage createTitle={createTitle} titleList={titleList} createComment={createComment} commentList={commentList} createPrivateTitles={createPrivateTitles} loggedInUserID={loggedInUserID} usernames={usernames} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />} />
-          <Route path="/profile" element={<Profile titleList={titleList} privateTitlesList={privateTitlesList} loggedInUserID={loggedInUserID} commentList={commentList} usernames={usernames} />} />
-          <Route path="/forum/:titleID" element={<Forum commentList={commentList} usernames={usernames} createComment={createComment} loggedInStatus={loggedInStatus} loggedInUserID={loggedInUserID} titleList={titleList} allCommentInteractions={allCommentInteractions} putCommentInteractions={putCommentInteractions} createCommentInteractions={createCommentInteractions} handleAddFavouriteToUser={handleAddFavouriteToUser} handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>} />
+          <Route path="/" element={
+          <LandingPage handlePlaying={handleplaying} />
+          } />
+
+          <Route path="/query" element={
+          <Query />
+          } />
+
+          <Route path="/signup" element={
+          <SignupPage createUser={createUser}
+          loggedInStatus={loggedInStatus}/>
+          } />
+
+          <Route path="/signin" element={
+          <SigninPage Login={Login}
+          loggedInStatus={loggedInStatus}/>
+          } />
+
+          <Route path="/introduction" element={
+          <Introducion />
+          } />
+
+          <Route path="/home" element={
+          <MainPage createTitle={createTitle}
+          titleList={titleList}
+          createComment={createComment}
+          commentList={commentList}
+          createPrivateTitles={createPrivateTitles}
+          loggedInUserID={loggedInUserID}
+          usernames={usernames}
+          createCommentInteractions={createCommentInteractions}
+          handleAddFavouriteToUser={handleAddFavouriteToUser}
+          handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser} />
+          } />
+
+          <Route path="/profile" element={
+          <Profile titleList={titleList}
+          privateTitlesList={privateTitlesList}
+          loggedInUserID={loggedInUserID}
+          commentList={commentList}
+          usernames={usernames} />
+          } />
+
+          <Route path="/forum/:titleID" element={
+          <Forum commentList={commentList}
+          usernames={usernames}
+          createComment={createComment}
+          loggedInStatus={loggedInStatus}
+          loggedInUserID={loggedInUserID}
+          titleList={titleList}
+          allCommentInteractions={allCommentInteractions}
+          putCommentInteractions={putCommentInteractions}
+          createCommentInteractions={createCommentInteractions}
+          handleAddFavouriteToUser={handleAddFavouriteToUser}
+          handleRemoveFavouriteFromUser={handleRemoveFavouriteFromUser}/>
+          } />
+          
         </Routes>
         <Footer className="mt-12"/>
       </HashRouter>
@@ -238,3 +287,4 @@ function App() {
 }
 
 export default App;
+
