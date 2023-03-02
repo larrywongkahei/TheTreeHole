@@ -23,7 +23,7 @@ function App() {
   const [titleList, setTitles] = useState([])
   const [commentList, setComments] = useState([])
   const [playing, setPlaying] = useState(false)
-  const [usernames, setUsername] = useState({})
+  const [usernames, setUsername] = useState([])
   const [privateTitlesList, setPrivateTitles] = useState([])
   const [loggedInUserID, setLoggedInUserID] = useState({})
   const [loggedInStatus, setLoggedInStatus] = useState(false)
