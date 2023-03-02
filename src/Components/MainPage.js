@@ -140,15 +140,13 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     function handlePreviousPage(){
         if(currentPage !== 1){
-            const newPage = currentPage - 1
-            setCurrentPage(newPage)
+            handlePageChange(currentPage - 1)
         }
     }
 
     function handleNextPage(){
         if(currentPage !== totalPage){
-            const newPage = currentPage + 1
-            setCurrentPage(newPage)
+            handlePageChange(currentPage + 1)
     }
 }
 
