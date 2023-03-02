@@ -45,7 +45,7 @@ function App() {
       const CommentInteractionData = await fetchCommentInteraction.json()
 
       // Set the data fetched to the State
-      Promise.all(titlesData, commentsData, usernames, privateTitles)
+      Promise.all(titlesData, commentsData, usernames, privateTitles, CommentInteractionData)
       .then(
       setTitles(titlesData),
       setComments(commentsData),

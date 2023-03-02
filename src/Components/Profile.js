@@ -4,7 +4,9 @@ import { Link } from "react-router-dom"
 function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
     
     const [nodesData, setNodesData] = useState()
+
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
+
     const theUserFavouriteList = theUserFavourite.split(",")
 
     const privateTitles = privateTitlesList.filter(each => each.userID === loggedInUserID)

@@ -6,11 +6,11 @@ function Footer () {
     }
 
     function toInstagram(){
-        window.location.href = 'https://www.instagram.com/heiyeungyeung520'
+        window.location.href = 'https://www.instagram.com/heiyeungyeung520';
     }
 
     function toLinkedin(){
-        window.location.href = 'https://www.linkedin.com/in/ka-hei-wong-429b66257'
+        window.location.href = 'https://www.linkedin.com/in/ka-hei-wong-429b66257';
     }
 
     return (
