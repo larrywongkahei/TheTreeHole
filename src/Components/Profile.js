@@ -5,6 +5,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
     
     const [nodesData, setNodesData] = useState()
 
+
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
 
     const theUserFavouriteList = theUserFavourite.split(",")

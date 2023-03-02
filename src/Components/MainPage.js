@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
 import { FcLikePlaceholder, FcLike } from "react-icons/fc"
+import { GrCaretPrevious, GrCaretNext } from "react-icons/gr"
 
 
 function Mainpage({ createTitle, titleList, createComment, commentList, createPrivateTitles, loggedInUserID, usernames, createCommentInteractions, handleAddFavouriteToUser, handleRemoveFavouriteFromUser }) {
@@ -91,11 +92,10 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     })
 
     const titleNodes = titleListToShow.map(each => {
-        const theComment = commentList.findLast(comment => comment.title === each.id)
-        const theUser = usernames.find(user => user.id === each.userID)
+        // const theComment = commentList.findLast(comment => comment.title === each.id)
+        // const theUser = usernames.find(user => user.id === each.userID)
         return (
-            // md:mx-40 lg:mx-32 xl:mx-72
-            <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 mx-60">
+            <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4">
                 <div className="sm:my-2 sm:w-full sm:h-full col-span-1 ">
                     <img src={flower} alt="" className="rounded-full h-24 w-24 mx-auto"/>
                 </div>
@@ -137,6 +137,20 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
             setMaxContentLetter(2000 - e.target.value.length)
         }
     }
+
+    function handlePreviousPage(){
+        if(currentPage !== 1){
+            const newPage = currentPage - 1
+            setCurrentPage(newPage)
+        }
+    }
+
+    function handleNextPage(){
+        if(currentPage !== totalPage){
+            const newPage = currentPage + 1
+            setCurrentPage(newPage)
+    }
+}
 
 
     function handleTitleFunction(){
@@ -213,9 +227,11 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     </div>
                 </div> 
             </div>}
-            {allPageNumbersList.length <= 10 ?
-            <div className="flex gap-2 text-white justify-center hover:cursor-pointer mx-auto">     
+            {allPageNumbersList ?
+            <div className="flex gap-2 text-white justify-center hover:cursor-pointer mx-auto">    
+                <GrCaretPrevious size={20} onClick={handlePreviousPage} className="text-white m-auto"/>
                 {pageNumbers}
+                <GrCaretNext size={20} onClick={handleNextPage} className="text-white m-auto"/>
             </div> : null}
         </div>
     )
