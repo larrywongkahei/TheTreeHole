@@ -5,7 +5,7 @@ import SignupPage from './Components/Signup';
 import Query from './Components/Query';
 import SigninPage from './Components/Signin';
 import Header from './Components/Header';
-import Rain2 from './videos/Rain2.mp4';
+import Background from './videos/Background.svg'
 import SunnyTree from './videos/Sunny_Tree.mp4'
 import Footer from './Components/Footer';
 import Sound from 'react-sound';
@@ -181,7 +181,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen pb-20">
-      <video
+      {/* <video
       src={SunnyTree}
         autoPlay
         loop
@@ -196,7 +196,18 @@ function App() {
           zIndex: "-1",
           objectFit:"cover",
         }}>
-      </video>
+      </video> */}
+      <img src={Background} 
+              style={{
+                height: "100%",
+                width: "100%",
+                top: "0",
+                right: "0",
+                padding: "none",
+                position: "fixed",
+                zIndex: "-1",
+                objectFit:"cover",
+              }}/>
       <Sound
         url={rainSound}
         playStatus={playing ? Sound.status.PLAYING : Sound.status.STOPPED}

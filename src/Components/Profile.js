@@ -18,11 +18,11 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     const privateTitlesNodes = privateTitles.map(each => {
         return (
-                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 rounded-md lg:mx-80 md:mx-12">
-                    <li>
+                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-60 md:mx-12 rounded-lg">
+                    <li className="text-2xl border-b mb-5 text-center">
                         {each.privateTitles}
                     </li>
-                    <li>
+                    <li className="text-lg mx-8">
                         {each.privateComments}
                     </li>
                 </ul>
@@ -31,7 +31,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     const publicTitleNodes = publicTitles.map(each => {
         return (
-                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12">
+                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
@@ -43,7 +43,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     const favouriteTitleNodes = favouriteTitle.map(each => {
         return (
-            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12">
+            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
@@ -85,7 +85,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
                 </li>
             </ul>
             <div className="w-[80%]">
-                <div className="flex flex-col text-center gap-5 mt-5 mx-20">
+                <div className="flex flex-col gap-5 mt-5 mx-20">
                     {nodesData}
                 </div>
             </div>
