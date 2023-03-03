@@ -181,21 +181,6 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen pb-20">
-      {window.location.pathname === "/" ? <video
-        src={Rain2}
-        autoPlay
-        muted
-        style={{
-          height: "100%",
-          width: "100%",
-          top: "0",
-          right: "0",
-          padding: "none",
-          position: "fixed",
-          zIndex: "-1",
-          objectFit:"cover",
-        }}>
-      </video> : 
       <video
       src={SunnyTree}
         autoPlay
@@ -211,7 +196,7 @@ function App() {
           zIndex: "-1",
           objectFit:"cover",
         }}>
-      </video>}
+      </video>
       <Sound
         url={rainSound}
         playStatus={playing ? Sound.status.PLAYING : Sound.status.STOPPED}
