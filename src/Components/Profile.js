@@ -22,7 +22,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
                     <li className="text-2xl border-b mb-5 text-center">
                         {each.privateTitles}
                     </li>
-                    <li className="text-lg mx-8">
+                    <li className={each.privateComments.length > 20 ? "text-lg mx-8" : "text-lg mx-8 text-center" }> 
                         {each.privateComments}
                     </li>
                 </ul>

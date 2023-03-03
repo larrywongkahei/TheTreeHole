@@ -226,7 +226,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                 </div> 
             </div>}
             {allPageNumbersList ?
-            <div className="flex gap-2 text-white justify-center hover:cursor-pointer mx-auto">    
+            <div className="flex gap-2 text-gray-800 justify-center hover:cursor-pointer mx-auto">    
                 <GrCaretPrevious size={20} onClick={handlePreviousPage} className="text-white m-auto"/>
                 {pageNumbers}
                 <GrCaretNext size={20} onClick={handleNextPage} className="text-white m-auto"/>
