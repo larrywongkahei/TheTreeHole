@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/TheTreeHole/static/css/main.b1810c2a.css",
-    "main.js": "/TheTreeHole/static/js/main.96bf8d3f.js",
+    "main.css": "/TheTreeHole/static/css/main.85c8ee2e.css",
+    "main.js": "/TheTreeHole/static/js/main.4db83c32.js",
     "static/js/787.5480e000.chunk.js": "/TheTreeHole/static/js/787.5480e000.chunk.js",
     "static/media/raining.mp3": "/TheTreeHole/static/media/raining.179db45b476ef3432c8d.mp3",
     "static/media/query.png": "/TheTreeHole/static/media/query.361fba4b512d85a0df95.png",
+    "static/media/TreeHole.svg": "/TheTreeHole/static/media/TreeHole.2fbed1b5e9468bd449c1e302f811a23f.svg",
     "static/media/Background.svg": "/TheTreeHole/static/media/Background.1227498fe55412676131e54b9dcb1180.svg",
     "static/media/flower.jpeg": "/TheTreeHole/static/media/flower.9d972edcda9a35dad23d.jpeg",
     "index.html": "/TheTreeHole/index.html",
-    "main.b1810c2a.css.map": "/TheTreeHole/static/css/main.b1810c2a.css.map",
-    "main.96bf8d3f.js.map": "/TheTreeHole/static/js/main.96bf8d3f.js.map",
+    "main.85c8ee2e.css.map": "/TheTreeHole/static/css/main.85c8ee2e.css.map",
+    "main.4db83c32.js.map": "/TheTreeHole/static/js/main.4db83c32.js.map",
     "787.5480e000.chunk.js.map": "/TheTreeHole/static/js/787.5480e000.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1810c2a.css",
-    "static/js/main.96bf8d3f.js"
+    "static/css/main.85c8ee2e.css",
+    "static/js/main.4db83c32.js"
   ]
 }
