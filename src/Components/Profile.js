@@ -169,7 +169,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
             </ul>
             <div className="w-[80%]">
                 <div className="mx-52 mt-4 px-4 py-4 bg-white rounded-lg dark:bg-gray-800 border-b border-gray-600 text-center">                    
-                    <input type="text" value={searchBarInput} onChange={handleSearchInput} placeholder="Search Public Topic" className="w-full py-2 text-md text-gray-900 bg-white border-0 dark:bg-gray-700 rounded-lg focus:ring-0 dark:text-white dark:placeholder-gray-400 text-center"/>
+                    <input type="text" value={searchBarInput} onChange={handleSearchInput} placeholder="Search Title" className="w-full py-2 text-md text-gray-900 bg-white border-0 dark:bg-gray-700 rounded-lg focus:ring-0 dark:text-white dark:placeholder-gray-400 text-center"/>
                 </div>
                 <div className="flex flex-col gap-5 mt-5 mx-20">
                     {nodesData}
