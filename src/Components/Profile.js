@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
@@ -7,31 +7,39 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
     const [page, setPage] = useState("")
     const [searchBarInput, setSearchBarInput] = useState("")
 
+    useEffect(() => {
+        showData()
+    }, [searchBarInput])
+
     function handleSearchInput(e){
         setSearchBarInput(e.target.value)
+    }
+
+    function showData(){
         switch(page){
-        case "Private":
-            if(searchBarInput){
-                setNodesData(filteredPrivateTitlesNodes)
+            case "Private":
+                if(searchBarInput){
+                    setNodesData(filteredPrivateTitlesNodes)
+                    break;
+                }
+                setNodesData(privateTitlesNodes)
+                break;
+            case "Public":
+                if(searchBarInput){
+                    setNodesData(filteredPublicTitleNodes)
+                    break;
+                }
+                setNodesData(publicTitleNodes)
+                console.log("public title data")
+                break;
+            case "Favourite":
+                if(searchBarInput){
+                    setNodesData(filteredFavouriteTitleNodes)
+                    break;
+                }
+                setNodesData(favouriteTitleNodes);
+                break;
             }
-            setNodesData(privateTitlesNodes)
-            break;
-        case "Public":
-            if(searchBarInput){
-                console.log(searchBarInput)
-                setNodesData(filteredPublicTitleNodes)
-                console.log("filtered data")
-            }
-            setNodesData(publicTitleNodes)
-            console.log("public title data")
-            break;
-        case "Favourite":
-            if(searchBarInput){
-                setNodesData(filteredFavouriteTitleNodes)
-            }
-            setNodesData(favouriteTitleNodes);
-            break;
-        }
     }
 
     const theUserFavourite = usernames.find(each => each.id === loggedInUserID).favourite
