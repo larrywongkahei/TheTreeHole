@@ -74,6 +74,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
         await createComment(data)
         await createCommentInteractions()
         setTextAreaData("")
+        setMaxContentLetter(2000)
     }
 
     const commentsOfTitle = commentList.filter(each => each.title === parseInt(titleID))
