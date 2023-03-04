@@ -6,7 +6,6 @@ import Query from './Components/Query';
 import SigninPage from './Components/Signin';
 import Header from './Components/Header';
 import Background from './videos/Background.svg'
-import SunnyTree from './videos/Sunny_Tree.mp4'
 import Footer from './Components/Footer';
 import Sound from 'react-sound';
 import rainSound from './sounds/raining.mp3'
