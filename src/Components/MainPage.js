@@ -181,6 +181,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         setTitle("")
         setKeepPrivate(true)
         setShowTitleForm(!showTitleForm)
+        setMaxLetter(23)
     }
 
     return (
