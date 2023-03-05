@@ -30,7 +30,6 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
                     break;
                 }
                 setNodesData(publicTitleNodes)
-                console.log("public title data")
                 break;
             case "Favourite":
                 if(searchBarInput){
@@ -48,15 +47,15 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     const privateTitles = privateTitlesList.filter(each => each.userID === loggedInUserID)
 
-    const filteredPrivateTitles = privateTitles.filter(each => each.privateTitles.includes(searchBarInput.toString()))
+    const filteredPrivateTitles = privateTitles.filter(each => each.privateTitles.replaceAll(" ", "").toLowerCase().includes(searchBarInput.toString().toLowerCase()))
 
     const publicTitles = titleList.filter(each => each.userID === loggedInUserID)
 
-    const filteredPublicTitles = publicTitles.filter(each => each.title.includes(searchBarInput.toString()))
+    const filteredPublicTitles = publicTitles.filter(each => each.title.replaceAll(" ", "").toLowerCase().includes(searchBarInput.toString().toLowerCase()))
 
     const favouriteTitle = titleList.filter(each => theUserFavouriteList.includes(each.id.toString()))
 
-    const filteredFavouriteTitles = favouriteTitle.filter(each => each.title.includes(searchBarInput.toString()))
+    const filteredFavouriteTitles = favouriteTitle.filter(each => each.title.replaceAll(" ", "").toLowerCase().includes(searchBarInput.toString().toLowerCase()))
 
     const privateTitlesNodes = privateTitles.map((each, index) => {
         return (
