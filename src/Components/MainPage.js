@@ -220,7 +220,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     </div>
                 </div>
             </div>}
-            <div className="flex gap-2 text-gray-800 hover:cursor-pointer fixed bottom-24 left-[47%] mx-auto">    
+            <div className="flex gap-2 text-gray-800 hover:cursor-pointer mx-auto">    
                 <GrCaretPrevious size={20} onClick={handlePreviousPage} className="text-white m-auto"/>
                 {pageNumbers}
                 <GrCaretNext size={20} onClick={handleNextPage} className="text-white m-auto"/>
