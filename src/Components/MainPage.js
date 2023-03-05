@@ -23,8 +23,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         updatePage()
     }, [titleList])
 
-    updatePage()
-
     useEffect(() => {
         if(!usernames){
             return (
