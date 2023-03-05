@@ -58,6 +58,7 @@ function App() {
 
   // To update the state every 50 seconds
   setInterval(() => {
+    updateCommentInteractions()
     updateComments()
     updateTitles()
     console.log("Updated")
