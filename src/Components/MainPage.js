@@ -92,8 +92,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     })
 
     const titleNodes = titleListToShow.map(each => {
-        // const theComment = commentList.findLast(comment => comment.title === each.id)
-        // const theUser = usernames.find(user => user.id === each.userID)
         return (
             <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4">
                 <div className="sm:my-2 sm:w-full sm:h-full col-span-1 ">
@@ -113,13 +111,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                         </div>
                     </li>
                 </ul>
-                    {/* {theComment? 
-                    <div className="col-start-3 col-span-4">
-                        <p className="text-gray-200 italic breack-words text-ellipsis overflow-hidden truncate px-6 pb-1 sm:h-12 ">
-                            {each.content}
-                        </p>
-                    </div>
-                        : null} */}
             </div>
         )
     })
