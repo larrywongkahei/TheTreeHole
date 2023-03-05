@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
 import { FcLikePlaceholder, FcLike } from "react-icons/fc"
+import Loading from "../videos/Loading.svg"
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr"
 
 
@@ -12,6 +13,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
     const [textAreaData, setTextAreaData] = useState("")
     const [keepPrivate, setKeepPrivate] = useState(true)
     const [title, setTitle] = useState("")
+    const [totalPage, setTotalPage] = useState(1)
     const [currentPage, setCurrentPage] = useState(1)
     const [titleListToShow, setTitleListToShow] = useState(titleList.slice(0, 5))
     const [maxLetter, setMaxLetter] = useState(23)
@@ -21,6 +23,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     useEffect(() => {
         updatePage()
+        setTotalPage(Math.ceil(titleList.length / 5))
     }, [titleList])
 
     useEffect(() => {
@@ -69,7 +72,6 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }
     }
 
-    const totalPage = Math.ceil(titleList.length / 5)
     const allPageNumbersList = []
     for(let i = 1;i <= totalPage; i++){
         allPageNumbersList.push(i)
@@ -83,17 +85,17 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
         }
         return allPageNumbersList.slice(currentPage - 2, currentPage + 2)
     }
-    const pageNumbers = getOnlyFivePage().map(each => {
+    const pageNumbers = getOnlyFivePage().map((each, index) => {
         return (
-            <p onClick={() => handlePageChange(each)} className="p-1">
+            <p onClick={() => handlePageChange(each)} className="p-1" key={index}>
                 {each}
             </p>
         )
     })
 
-    const titleNodes = titleListToShow.map(each => {
+    const titleNodes = titleListToShow.map((each, index) => {
         return (
-            <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4">
+            <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4" key={index}>
                 <div className="sm:my-2 sm:w-full sm:h-full col-span-1 ">
                     <img src={flower} alt="" className="rounded-full h-24 w-24 mx-auto"/>
                 </div>
@@ -216,14 +218,13 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                     <div className="text-white py-3 sm:mx-20">
                         {titleNodes}
                     </div>
-                </div> 
+                </div>
             </div>}
-            {allPageNumbersList ?
-            <div className="flex gap-2 text-gray-800 justify-center hover:cursor-pointer mx-auto">    
+            <div className="flex gap-2 text-gray-800 justify-center hover:cursor-pointer fixed bottom-24 mx-auto pl-[49%]">    
                 <GrCaretPrevious size={20} onClick={handlePreviousPage} className="text-white m-auto"/>
                 {pageNumbers}
                 <GrCaretNext size={20} onClick={handleNextPage} className="text-white m-auto"/>
-            </div> : null}
+            </div>
         </div>
     )
 }

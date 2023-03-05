@@ -58,9 +58,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     const filteredFavouriteTitles = favouriteTitle.filter(each => each.title.includes(searchBarInput.toString()))
 
-    const privateTitlesNodes = privateTitles.map(each => {
+    const privateTitlesNodes = privateTitles.map((each, index) => {
         return (
-                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-60 md:mx-12 rounded-lg">
+                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-60 md:mx-12 rounded-lg" key={index}>
                     <li className="text-2xl border-b mb-5 text-center">
                         {each.privateTitles}
                     </li>
@@ -71,9 +71,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
         )
     })
 
-    const filteredPrivateTitlesNodes = filteredPrivateTitles.map(each => {
+    const filteredPrivateTitlesNodes = filteredPrivateTitles.map((each, index) => {
         return (
-                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-60 md:mx-12 rounded-lg">
+                <ul className="flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-60 md:mx-12 rounded-lg" key={index}>
                     <li className="text-2xl border-b mb-5 text-center">
                         {each.privateTitles}
                     </li>
@@ -84,9 +84,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
         )
     })
 
-    const publicTitleNodes = publicTitles.map(each => {
+    const publicTitleNodes = publicTitles.map((each, index) => {
         return (
-                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
+                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center" key={index}>
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
@@ -96,9 +96,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
         )
     })
 
-    const filteredPublicTitleNodes = filteredPublicTitles.map(each => {
+    const filteredPublicTitleNodes = filteredPublicTitles.map((each, index) => {
         return (
-                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
+                <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center" key={index}>
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
@@ -108,9 +108,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
         )
     })
 
-    const favouriteTitleNodes = favouriteTitle.map(each => {
+    const favouriteTitleNodes = favouriteTitle.map((each, index) => {
         return (
-            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
+            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center" key={index}>
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}
@@ -121,9 +121,9 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
         )
     })
 
-    const filteredFavouriteTitleNodes = filteredFavouriteTitles.map(each => {
+    const filteredFavouriteTitleNodes = filteredFavouriteTitles.map((each, index) => {
         return (
-            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center">
+            <ul className=" flex flex-col text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white py-5 lg:mx-80 md:mx-12 rounded-lg text-lg text-center" key={index}>
                     <Link to={`/forum/${each.id}`}>
                         <li>
                             {each.title}

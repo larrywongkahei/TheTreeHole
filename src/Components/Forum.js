@@ -79,13 +79,13 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const commentsOfTitle = commentList.filter(each => each.title === parseInt(titleID))
 
-    const commentNodes = commentsOfTitle.map(each => {
+    const commentNodes = commentsOfTitle.map((each, index) => {
         const thecommentInteraction = allCommentInteractions.find(interaction => interaction.id === each.id)
         const user = usernames.find(user => {
             return user.id === each.userID
         })
        return( 
-       <div className="text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 ">
+       <div className="text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 " key={index}>
             <img src={flower} className="rounded-full h-24 w-24 m-3"/>
             <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
                 <ul>

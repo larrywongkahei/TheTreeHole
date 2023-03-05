@@ -6,7 +6,7 @@ const Query = () =>{
         <div className="text-white text-center my-auto text-5xl sm:mt-60">
             <img src={query} className="pb-18"
                           style={{
-                            height: "120%",
+                            height: "130%",
                             width: "100%",
                             top: "0",
                             right: "0",
