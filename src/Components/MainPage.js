@@ -21,7 +21,9 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     useEffect(() => {
         updatePage()
-    }, [])
+    }, [titleList])
+
+    updatePage()
 
     useEffect(() => {
         if(!usernames){
