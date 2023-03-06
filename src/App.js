@@ -56,15 +56,15 @@ function App() {
     getdata()
   }, [])
 
-  function updateData () {
-    updateCommentInteractions()
-    updateComments()
-    updateTitles()
-  }
+  // function updateData () {
+  //   updateCommentInteractions()
+  //   updateComments()
+  //   updateTitles()
+  // }
   
 
-  // To update the state every 10 seconds
-  setInterval(updateData, 10000)
+  // // To update the state every 10 seconds
+  // setInterval(updateData, 10000)
 
 
 
