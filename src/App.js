@@ -42,7 +42,7 @@ function App() {
       const privateTitles = await fetchPrivateTitles.json()
       const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
       const CommentInteractionData = await fetchCommentInteraction.json()
-        // To update the state every 10 seconds
+        // To update the state every 5 seconds
       setInterval(updateData, 5000)
 
 
