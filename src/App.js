@@ -43,7 +43,7 @@ function App() {
       const fetchCommentInteraction = await fetch('https://thetreeholebackend.herokuapp.com/api/CommentInteractions');
       const CommentInteractionData = await fetchCommentInteraction.json()
         // To update the state every 10 seconds
-      setInterval(updateData, 10000)
+      setInterval(updateData, 5000)
 
 
       // Set the data fetched to the State
@@ -63,6 +63,9 @@ function App() {
     updateCommentInteractions()
     updateComments()
     updateTitles()
+    updatePrivateTitles()
+    updateFavourite()
+    updateUserNames()
   }
   
 
@@ -153,6 +156,11 @@ function App() {
     setAllCommentInteractions(newCommentinteractiion)
   }
 
+  async function updateUserNames(){
+    const newUserNames = await API.getLatestUsers()
+    setUsername(newUserNames)
+  }
+
 
   function handleplaying() {
     setPlaying(!playing)
@@ -160,8 +168,7 @@ function App() {
 
   async function handleAddFavouriteToUser(data){
     await API.updateFavourite(data)
-    const newUserData = await API.getLatestUsers()
-    setUsername(newUserData)
+    updateUserNames()
   }
 
   async function handleRemoveFavouriteFromUser(theUser, titleId){
@@ -171,8 +178,7 @@ function App() {
       'favourite' : theFavouriteArray
     }
     await API.updateFavourite(data)
-    const newUserData = await API.getLatestUsers()
-    setUsername(newUserData)
+    updateUserNames()
   }
 
   function removeCentainFavouriteFromUser(user, titleId){
