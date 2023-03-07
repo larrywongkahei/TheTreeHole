@@ -64,7 +64,6 @@ function App() {
     updateComments()
     updateTitles()
     updatePrivateTitles()
-    updateFavourite()
     updateUserNames()
   }
   
