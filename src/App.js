@@ -59,6 +59,8 @@ function App() {
     getdata()
   }, [])
 
+
+
   function updateData () {
     updateCommentInteractions()
     updateComments()
@@ -157,7 +159,6 @@ function App() {
 
   async function updateUserNames(){
     const newUserNames = await API.getLatestUsers()
-    console.log(newUserNames)
     setUsername(newUserNames)
   }
 
