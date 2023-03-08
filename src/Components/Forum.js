@@ -129,6 +129,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const commentNodes = commentsOfTitle.map((each, index) => {
         const thecommentInteraction = allCommentInteractions.find(interaction => interaction.id === each.id)
+        console.log(thecommentInteraction)
         const user = usernames.find(user => {
             return user.id === each.userID
         })

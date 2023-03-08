@@ -153,8 +153,9 @@ function App() {
   }
 
   async function updateCommentInteractions(){
-    const newCommentinteractiion = await API.getCommentInteractions()
-    setAllCommentInteractions(newCommentinteractiion)
+    const newCommentinteraction = await API.getCommentInteractions()
+    console.log(newCommentinteraction)
+    setAllCommentInteractions(newCommentinteraction)
   }
 
   async function updateUserNames(){
