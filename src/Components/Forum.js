@@ -12,12 +12,17 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
 
-    function getAllInteractionsNames(commentId){
-        const nameList = []
-        nameList.push(allCommentInteractions.like)
-        nameList.push(allCommentInteractions.dislike)
-        nameList.push(allCommentInteractions.love)
-        return nameList.split(",")
+    function getAllInteractionsNames(){
+        let nameList = ""
+        console.log(allCommentInteractions)
+        if (allCommentInteractions[0].like !== ""|| allCommentInteractions[0].dislike !== "" || allCommentInteractions[0].love !== ""){
+            nameList = nameList + allCommentInteractions[0].like
+            nameList = nameList + allCommentInteractions[0].dislike
+            nameList = nameList + allCommentInteractions[0].love
+            return nameList.split(",")
+        }
+        return nameList
+
     }
 
     function handleChange(e){
@@ -32,14 +37,14 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     function handleLike(id){
         const thecommentInteraction = allCommentInteractions.find(each => each.id === id)
         const loggedInUser = usernames.find(each => each.id === loggedInUserID)
-        const allInteractions = getAllInteractionsNames(id)
+        const allInteractions = getAllInteractionsNames()
         if (loggedInStatus && !allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'like' : thecommentInteraction.like + `${loggedInUser.username},`,
             }
            putCommentInteractions(data)
-        }else if (loggedInStatus && !allCommentInteractions.like.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !allCommentInteractions[0].like.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'like' : thecommentInteraction.like + `${loggedInUser.username},`,
@@ -61,7 +66,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'dislike' : thecommentInteraction.dislike + `${loggedInUser.username},`
                }
             putCommentInteractions(data) 
-        }else if (loggedInStatus && !allCommentInteractions.dislike.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !allCommentInteractions[0].dislike.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'dislike' : thecommentInteraction.dislike + `${loggedInUser.username},`,
@@ -82,7 +87,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'love' : thecommentInteraction.love + `${loggedInUser.username},`
                }
                putCommentInteractions(data)
-        }else if (loggedInStatus && !allCommentInteractions.love.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !allCommentInteractions[0].love.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'love' : thecommentInteraction.love + `${loggedInUser.username},`,
@@ -138,24 +143,24 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 </ul>
                 <ul className="sm:flex">
                     <div className="sm:flex gap-2">
-                        {thecommentInteraction.length > 1? 
+                        {thecommentInteraction.like !== ""? 
                         <li className="text-xl">
-                            {thecommentInteraction.like.split(",").length}
-                        </li> : 0}
+                            {thecommentInteraction.like.split(",").length -1}
+                        </li> : <p className="text-xl">0</p>}
                         <li className="pt-1">
                             <BiLike size={20} className="hover:cursor-pointer"  onClick={() => handleLike(each.id)}/>
                         </li>
-                        {thecommentInteraction? 
+                        {thecommentInteraction.dislike !== ""? 
                         <li className="text-xl">
-                            {thecommentInteraction.dislike.split(",").length}
-                        </li> : 0}
+                            {thecommentInteraction.dislike.split(",").length -1}
+                        </li> : <p className="text-xl">0</p>}
                         <li className="pt-1">
                             <BiDislike size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
                         </li>
-                        {thecommentInteraction? 
+                        {thecommentInteraction.love !== ""? 
                         <li className="text-xl">
-                            {thecommentInteraction.love.split(",").length}
-                        </li> : 0}
+                            {thecommentInteraction.love.split(",").length -1}
+                        </li> : <p className="text-xl">0</p>}
                         <li className="pt-1">
                             <FcLike size={20}  className="hover:cursor-pointer" onClick={() => handleLove(each.id)}/>
                         </li>
