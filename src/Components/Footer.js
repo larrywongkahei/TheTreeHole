@@ -1,4 +1,5 @@
 import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs"
+import Swal from 'sweetalert2'
 
 function Footer () {
     function toGithub(){
@@ -14,17 +15,43 @@ function Footer () {
     }
 
     function handleContactMe(){
-
+        Swal.fire({
+            title:'Enter your email',
+            html:
+            `
+            <input type="text" class="swal2-input" id='firstName'/>
+            <input type="text" class="swal2-input" id='lastName'/>
+            <input type="email "class="swal2-input" id='email'/>
+            `,
+            preConfirm: () => {
+                const email = Swal.getPopup().querySelector('#email').value
+                return {email : email}
+            }
+        }).then(result => {
+            Swal.fire({
+                title:'Success',
+                text:`We will contact you via ${result.value.email} within three days.`,
+                icon:'success',
+                showConfirmButton:false,
+                timer:3300,
+                width:'56%'
+            })
+        })
     }
 
     function handleReportError(){
+        Swal.fire({
+            title:'Report an error',
+            input:'textarea',
+            value:'${content}',
+        })
 
     }
 
     function handleComment(){
 
     }
-    
+
     return (
         <div className="bg-cyan-600 pb-1 fixed bottom-0 justify-center font-medium text-xl w-full" >
             <ul className="">
