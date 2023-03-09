@@ -17,7 +17,7 @@ import Swal from 'sweetalert2'
               Swal.fire({
                 title: 'Signup Failed',
                 text: 'Username or Email has been used',
-                icon: 'error',
+                icon: 'warning',
                 width: '24rem',
                 confirmButtonText: 'Ok'
               })
