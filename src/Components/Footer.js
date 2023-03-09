@@ -17,11 +17,17 @@ function Footer () {
     function handleContactMe(){
         Swal.fire({
             title:'Enter your email',
+            width:'45%',
             html:
             `
-            <input type="text" class="swal2-input" id='firstName'/>
-            <input type="text" class="swal2-input" id='lastName'/>
-            <input type="email "class="swal2-input" id='email'/>
+            <label>Enter first name</label>
+            <input type="text" class="swal2-input" id='firstName' placeholder='First name'/>
+            <br>
+            <label>Enter last name</label>
+            <input type="text" class="swal2-input" id='lastName' placeholder='Last name'/>
+            <br>
+            <label>Enter your email</label>
+            <input type="email "class="swal2-input" id='email' placeholder='Email'/>
             `,
             preConfirm: () => {
                 const email = Swal.getPopup().querySelector('#email').value
