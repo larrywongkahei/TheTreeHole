@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { MdOutlineAddBox } from "react-icons/md"
 import flower from "../flower/flower.jpeg"
 import { FcLikePlaceholder, FcLike } from "react-icons/fc"
-import Loading from "../videos/Loading.svg"
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr"
 
 

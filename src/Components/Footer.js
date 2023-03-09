@@ -28,13 +28,13 @@ function Footer () {
                 </li>
                 </div>
                 <div className="flex gap-10 p-2 text-sm justify-center">
-                    <li>
+                    <li className="hover:cursor-pointer">
                         Contact me
                     </li>
-                    <li>
+                    <li className="hover:cursor-pointer">
                         Report error
                     </li>
-                    <li>
+                    <li className="hover:cursor-pointer">
                         Comment
                     </li>
                 </div>

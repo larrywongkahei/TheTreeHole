@@ -27,7 +27,7 @@ import Swal from 'sweetalert2'
                 title: 'Account created!',
                 text: 'Welcome',
                 icon: 'success',
-                width: '24rem',
+                width: '18rem',
                 timer:'1500',
                 showConfirmButton:false
               })
@@ -72,7 +72,7 @@ import Swal from 'sweetalert2'
                 title: 'Logged In',
                 text: 'Welcome back',
                 icon: 'success',
-                width: '24rem',
+                width: '18rem',
                 timer:'1500',
                 showConfirmButton:false
               })
