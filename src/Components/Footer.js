@@ -58,14 +58,27 @@ function Footer () {
         if(title){
             Swal.fire({
                 title:'Recorded',
-                icon:'success'
+                icon:'success',
+                showConfirmButton:false,
+                timer:1500
             })
         }
-
     }
 
-    function handleComment(){
-
+    async function handleComment(){
+        const {value : comment} = await Swal.fire({
+            title:'Leave your comment',
+            input:'textarea',
+            inputPlaceholder:'Comments',
+        })
+        if(comment){
+            Swal.fire({
+                icon:'success',
+                text:'We appreciate your feedback!',
+                showConfirmButton:false,
+                timer:2000
+            })
+        }
     }
 
     return (
