@@ -45,12 +45,22 @@ function Footer () {
         })
     }
 
-    function handleReportError(){
-        Swal.fire({
+    async function handleReportError(){
+        const {value : title} = await Swal.fire({
             title:'Report an error',
             input:'textarea',
-            value:'${content}',
+            html:
+            `
+            <input type="text" id='title' class='swal2-input' placeholder='Enter title' />
+            `,
+            icon:'info',
         })
+        if(title){
+            Swal.fire({
+                title:'Recorded',
+                icon:'success'
+            })
+        }
 
     }
 
