@@ -6,19 +6,18 @@ import { FcLike } from "react-icons/fc"
 
 
 
-function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, putCommentInteractions, createCommentInteractions }){
+function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedInUserID, titleList, allCommentInteractions, putCommentInteractions }){
 
     const [maxContentLetter, setMaxContentLetter] = useState(2000)
     const [textareaData, setTextAreaData] = useState("")
     const { titleID } = useParams()
 
-    function getAllInteractionsNames(){
+    function getAllInteractionsNames(id){
         let nameList = ""
-        console.log(allCommentInteractions)
-        if (allCommentInteractions[0].like !== ""|| allCommentInteractions[0].dislike !== "" || allCommentInteractions[0].love !== ""){
-            nameList = nameList + allCommentInteractions[0].like
-            nameList = nameList + allCommentInteractions[0].dislike
-            nameList = nameList + allCommentInteractions[0].love
+        if (allCommentInteractions[id - 1].like !== ""|| allCommentInteractions[id - 1].dislike !== "" || allCommentInteractions[id - 1].love !== ""){
+            nameList = nameList + allCommentInteractions[id - 1].like
+            nameList = nameList + allCommentInteractions[id - 1].dislike
+            nameList = nameList + allCommentInteractions[id - 1].love
             return nameList.split(",")
         }
         return nameList
@@ -37,14 +36,15 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
     function handleLike(id){
         const thecommentInteraction = allCommentInteractions.find(each => each.id === id)
         const loggedInUser = usernames.find(each => each.id === loggedInUserID)
-        const allInteractions = getAllInteractionsNames()
+        const allInteractions = getAllInteractionsNames(id)
         if (loggedInStatus && !allInteractions.includes(loggedInUser.username)){
+            console.log(!allInteractions.includes(loggedInUser.username))
             const data = {
                 'id' : id,
                 'like' : thecommentInteraction.like + `${loggedInUser.username},`,
             }
            putCommentInteractions(data)
-        }else if (loggedInStatus && !allCommentInteractions[0].like.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !thecommentInteraction.like.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'like' : thecommentInteraction.like + `${loggedInUser.username},`,
@@ -66,7 +66,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'dislike' : thecommentInteraction.dislike + `${loggedInUser.username},`
                }
             putCommentInteractions(data) 
-        }else if (loggedInStatus && !allCommentInteractions[0].dislike.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !thecommentInteraction.dislike.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'dislike' : thecommentInteraction.dislike + `${loggedInUser.username},`,
@@ -87,7 +87,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                 'love' : thecommentInteraction.love + `${loggedInUser.username},`
                }
                putCommentInteractions(data)
-        }else if (loggedInStatus && !allCommentInteractions[0].love.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
+        }else if (loggedInStatus && !thecommentInteraction.love.includes(loggedInUser.username) && allInteractions.includes(loggedInUser.username)){
             const data = {
                 'id' : id,
                 'love' : thecommentInteraction.love + `${loggedInUser.username},`,
@@ -120,7 +120,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
         
         await createComment(data)
-        await createCommentInteractions()
         setTextAreaData("")
         setMaxContentLetter(2000)
     }
@@ -129,6 +128,8 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const commentNodes = commentsOfTitle.map((each, index) => {
         const thecommentInteraction = allCommentInteractions.find(interaction => interaction.id === each.id)
+        console.log(each.id)
+        console.log(allCommentInteractions)
         console.log(thecommentInteraction)
         const user = usernames.find(user => {
             return user.id === each.userID

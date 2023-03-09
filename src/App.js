@@ -87,12 +87,15 @@ function App() {
 
   async function createComment(data){
     await API.createComment(data)
+    await API.createCommentInteractions()
     updateComments()
+    updateCommentInteractions()
   }
 
   async function createTitle(data){
     await API.createTitle(data)
     updateTitles()
+    updateCommentInteractions()
   }
     
 
