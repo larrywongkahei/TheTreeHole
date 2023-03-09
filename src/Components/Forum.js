@@ -3,6 +3,7 @@ import { useState } from "react"
 import { BiLike, BiDislike }from "react-icons/bi"
 import flower from "../flower/flower.jpeg"
 import { FcLike } from "react-icons/fc"
+import { RiEmotionUnhappyLine } from "react-icons/ri"
 
 
 
@@ -154,7 +155,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
                             {thecommentInteraction.dislike.split(",").length -1}
                         </li> : <p className="text-xl">0</p>}
                         <li className="pt-1">
-                            <BiDislike size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
+                            <RiEmotionUnhappyLine size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
                         </li>
                         {thecommentInteraction.love !== ""? 
                         <li className="text-xl">
