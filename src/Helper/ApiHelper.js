@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2'
   // A post method function to send new user data to the endpoint,
   // which then will trigger the create user django built-in method in the API view file.
   // forumapp/views.py Line83
@@ -14,10 +14,23 @@
         .then(res => {
           switch (res.status) {
             case 400:
-              alert("Signup Failed.\nUsername or Email has been used.")
+              Swal.fire({
+                title: 'Signup Failed',
+                text: 'Username or Email has been used',
+                icon: 'error',
+                width: '24rem',
+                confirmButtonText: 'Ok'
+              })
               break;
             case 201:
-              alert("Created Account\nWelcome")
+              Swal.fire({
+                title: 'Account created!',
+                text: 'Welcome',
+                icon: 'success',
+                width: '24rem',
+                timer:'1500',
+                showConfirmButton:false
+              })
               return res.json()
           }
         })
@@ -46,10 +59,23 @@
         .then(res => {
           switch (res.status) {
             case 400:
-              alert("Username or Password wrong")
+              Swal.fire({
+                title: 'Signin Failed',
+                text: 'Username or Password wrong',
+                icon: 'error',
+                width: '24rem',
+                confirmButtonText: 'Ok'
+              })
               break;
             case 202:
-              alert("Welcome back")
+              Swal.fire({
+                title: 'Logged In',
+                text: 'Welcome back',
+                icon: 'success',
+                width: '24rem',
+                timer:'1500',
+                showConfirmButton:false
+              })
               return res.json();
           }
     })
