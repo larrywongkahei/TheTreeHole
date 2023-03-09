@@ -13,6 +13,18 @@ function Footer () {
         window.location.href = 'https://www.linkedin.com/in/ka-hei-wong-429b66257';
     }
 
+    function handleContactMe(){
+
+    }
+
+    function handleReportError(){
+
+    }
+
+    function handleComment(){
+
+    }
+    
     return (
         <div className="bg-cyan-600 pb-1 fixed bottom-0 justify-center font-medium text-xl w-full" >
             <ul className="">
@@ -28,13 +40,13 @@ function Footer () {
                 </li>
                 </div>
                 <div className="flex gap-10 p-2 text-sm justify-center">
-                    <li className="hover:cursor-pointer">
+                    <li className="hover:cursor-pointer" onClick={handleContactMe}>
                         Contact me
                     </li>
-                    <li className="hover:cursor-pointer">
+                    <li className="hover:cursor-pointer" onClick={handleReportError}>
                         Report error
                     </li>
-                    <li className="hover:cursor-pointer">
+                    <li className="hover:cursor-pointer" onClick={handleComment}>
                         Comment
                     </li>
                 </div>
