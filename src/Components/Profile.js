@@ -152,7 +152,7 @@ function Profile({ privateTitlesList, loggedInUserID, titleList, usernames }){
 
     return (
         <div className="">
-            <ul className="fixed right-0 w-[15%] bg-black opacity-80 h-full flex flex-col">
+            <ul className="fixed right-0 w-[15%] bg-black opacity-70 h-full flex flex-col">
                 <li>
                     <button className="text-white border-y hover:bg-gray-500 w-full py-16" onClick={() => handleClick("Private")}>Private</button>
                 </li>
