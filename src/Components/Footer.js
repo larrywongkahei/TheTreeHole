@@ -1,5 +1,7 @@
 import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs"
 import Swal from 'sweetalert2'
+import emailjs from 'emailjs-com'
+import { useRef } from "react";
 
 function Footer () {
     function toGithub(){
@@ -12,6 +14,15 @@ function Footer () {
 
     function toLinkedin(){
         window.location.href = 'https://www.linkedin.com/in/ka-hei-wong-429b66257';
+    }
+    
+    const sendEmail = (data) => {
+        emailjs.send('service_1qoedwl', 'template_xeg11xd', data, 'LILAQhKwtsOMhjOYy')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
     }
 
     function handleContactMe(){
@@ -31,6 +42,13 @@ function Footer () {
             `,
             preConfirm: () => {
                 const email = Swal.getPopup().querySelector('#email').value
+                const firstName = Swal.getPopup().querySelector('#firstName').value
+                const data = {
+                    'email' : email,
+                    'firstName' : firstName
+                }
+                sendEmail(data)
+
                 return {email : email}
             }
         }).then(result => {
