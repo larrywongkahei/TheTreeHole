@@ -11,6 +11,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const [maxContentLetter, setMaxContentLetter] = useState(2000)
     const [textareaData, setTextAreaData] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
     const { titleID } = useParams()
 
     function getAllInteractionsNames(id){
