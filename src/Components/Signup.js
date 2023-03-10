@@ -51,15 +51,17 @@ const SignupPage = ({ createUser }) => {
     }
 
     return (
-            <div className=" mt-5 mx-16 rounded-lg h-100">
-                <div className="font-bold text-4xl text-gray-800 text-center pb-5">
+        // mt-5 mx-16 rounded-lg h-100
+            <div className=" mt-4 mx-16 rounded-lg h-100 xl:mt-5">
+                {/* font-bold text-4xl text-gray-800 text-center pb-5 xl:text-5xl" */}
+                <div className="font-bold text-3xl text-gray-800 text-center pb-4 xl:text-5xl">
                     <Typed strings={["How's your day?", 'We care about you.', 'You are not alone!']}
                     typeSpeed={100}
                     backSpeed={70}
                     backDelay={900} 
                     loop />
                 </div>
-                <div className="bg-gray-800 mx-auto w-[30%] rounded-lg">
+                <div className="bg-gray-800 mx-auto w-[100%] rounded-lg sm:w-[48%] md:w-[38%] lg:w-[30%] xl:w-[20%]">
                     <div className="text-white flex justify-center pt-4">
                         <CgProfile size={100}/>
                     </div>
