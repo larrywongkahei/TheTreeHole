@@ -98,12 +98,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             putCommentInteractions(data)
         }
     }
-    // function handleUpdateFavourite(userId, titleId, status){
-    //     const theUser = usernames.find(each => each.id === userId)
-    //     const data = {
-    //         'id' : userId,
-    //         'favourite' : theUser.favourite + `${titleId},`
-    //     }
 
     async function handleSubmit(e){
         e.preventDefault()
