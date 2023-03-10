@@ -94,13 +94,17 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
 
     const titleNodes = titleListToShow.map((each, index) => {
         return (
+            // grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4
             <div className="grid justify-items grid-cols-5  dark:bg-gray-700 rounded-md mb-5 lg:mx-60 mx-4" key={index}>
-                <div className="sm:my-2 sm:w-full sm:h-full col-span-1 ">
-                    <img src={flower} alt="" className="rounded-full h-24 w-24 mx-auto"/>
+                {/* sm:my-2 sm:w-full sm:h-full col-span-1 */}
+                <div className="sm:w-full sm:h-full col-span-1 ">
+                {/* rounded-full h-24 w-24 mx-auto" */}
+                    <img src={flower} alt="" className="rounded-full h-16 w-16 mx-auto my-1"/>
                 </div>
                 <ul className="col-span-4 w-full">
-                    <li className="font-bold text-2xl font-mono pb-1 pt-3 text-ellipsis overflow-hidden px-4 grid grid-cols-4">
-                        <div className="my-auto col-span-3">
+                {/* font-bold text-2xl font-mono pb-1 pt-3 text-ellipsis overflow-hidden px-4 grid grid-cols-4 */}
+                    <li className="font-bold text-2xl font-mono my-1 pt-1 px-4 grid grid-cols-4">
+                        <div className="my-auto col-span-3 text-ellipsis overflow-hidden">
                             <Link to={`/forum/${each.id}`}>
                             {each.title}
                             </Link>
