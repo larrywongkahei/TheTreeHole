@@ -103,7 +103,7 @@ function Mainpage({ createTitle, titleList, createComment, commentList, createPr
                 </div>
                 <ul className="col-span-4 w-full">
                 {/* font-bold text-2xl font-mono pb-1 pt-3 text-ellipsis overflow-hidden px-4 grid grid-cols-4 */}
-                    <li className="font-bold text-2xl font-mono my-1 pt-1 px-4 grid grid-cols-4">
+                    <li className="font-bold text-2xl font-mono my-1 pt-1 sm:pt-1 px-4 grid grid-cols-4">
                         <div className="my-auto col-span-3 text-ellipsis overflow-hidden">
                             <Link to={`/forum/${each.id}`}>
                             {each.title}
