@@ -11,7 +11,6 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     const [maxContentLetter, setMaxContentLetter] = useState(2000)
     const [textareaData, setTextAreaData] = useState("")
-    const [currentPage, setCurrentPage] = useState(1)
     const { titleID } = useParams()
 
     function getAllInteractionsNames(id){
@@ -128,46 +127,62 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
             return user.id === each.userID
         })
        return( 
-       <div className="text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 " key={index}>
-            <img src={flower} className="rounded-full h-24 w-24 m-3"/>
-            <ul className="sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words">
+        // text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-40 lg:mx-32 xl:mx-72 
+       <div className="text-white sm:flex dark:bg-gray-700 rounded mb-5 md:mx-30 lg:mx-32 xl:mx-72 pt-3 sm:pt-0" key={index}>
+        {/* rounded-full h-24 w-24 m-3 */}
+            <img src={flower} className="rounded-full h-24 w-24 mx-auto sm:m-3"/>
+            {/* sm:w-[75%] sm:my-auto sm:grid sm:justify-items gap-16 break-words */}
+            <ul className="sm:my-auto sm:grid sm:justify-items gap-16 break-words sm:w-[100%]">
                 <ul>
-                    <li className=" mr-3 ml-8 sm:pt-6 py-5">
+                {/* mr-3 ml-8 sm:pt-6 py-5 */}
+                    <li className="text-center sm:pt-6 py-5 sm:mr-24 sm:ml-8 sm:text-start">
                         {each.content}
                     </li>
                 </ul>
                 <ul className="sm:flex">
-                    <div className="sm:flex gap-2">
-                        {thecommentInteraction.like !== ""? 
-                        <li className="text-xl">
-                            {thecommentInteraction.like.split(",").length -1}
-                        </li> : <p className="text-xl">0</p>}
-                        <li className="pt-1">
-                            <BiLike size={20} className="hover:cursor-pointer"  onClick={() => handleLike(each.id)}/>
-                        </li>
-                        {thecommentInteraction.dislike !== ""? 
-                        <li className="text-xl">
-                            {thecommentInteraction.dislike.split(",").length -1}
-                        </li> : <p className="text-xl">0</p>}
-                        <li className="pt-1">
-                            <RiEmotionUnhappyLine size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
-                        </li>
-                        {thecommentInteraction.love !== ""? 
-                        <li className="text-xl">
-                            {thecommentInteraction.love.split(",").length -1}
-                        </li> : <p className="text-xl">0</p>}
-                        <li className="pt-1">
-                            <FcLike size={20}  className="hover:cursor-pointer" onClick={() => handleLove(each.id)}/>
-                        </li>
+                <div className="flex gap-2 justify-center pb-2">
+                    <div className="flex gap-2 mt-1">
+                        <ul className="flex gap-1">
+                            {thecommentInteraction.like !== ""? 
+                            <li className="text-xl">
+                                {thecommentInteraction.like.split(",").length -1}
+                            </li> : <p className="text-xl">0</p>}
+                            <li className="pt-1">
+                                <BiLike size={20} className="hover:cursor-pointer"  onClick={() => handleLike(each.id)}/>
+                            </li>
+                        </ul>
+                        <ul className="flex gap-1">
+                            {thecommentInteraction.dislike !== ""? 
+                            <li className="text-xl">
+                                {thecommentInteraction.dislike.split(",").length -1}
+                            </li> : <p className="text-xl">0</p>}
+                            <li className="pt-1">
+                                <RiEmotionUnhappyLine size={20} className="hover:cursor-pointer" onClick={() => handleDislike(each.id)}/>
+                            </li>
+                        </ul>
+                        <ul className="flex gap-1">
+                            {thecommentInteraction.love !== ""? 
+                            <li className="text-xl">
+                                {thecommentInteraction.love.split(",").length -1}
+                            </li> : <p className="text-xl">0</p>}
+                            <li className="pt-1">
+                                <FcLike size={20}  className="hover:cursor-pointer" onClick={() => handleLove(each.id)}/>
+                            </li>
+                        </ul>
                     </div>
-                    <div className="flex pl-20">
-                        <li className="sm:pr-10 sm:mb-5 sm:">
+                </div>
+                    {/* flex pl-20 */}
+                    <div className="flex justify-between mx-3 sm:grid sm:grid-cols-3 sm:justify-items sm:w-full">
+                    {/* sm:pr-10 sm:mb-5 */}
+                        <li className="sm:mb-5 pt-2 sm:justify-self-end">
                             {user.username}
                         </li>
-                        <li className="pr-3">
+                        {/* pr-3 */}
+                        <li className="sm:pr-3  pt-2 sm:justify-self-end">
                             {each.time}
                         </li>
-                        <li className="pr-3 mb-5">
+                        {/* pr-3 mb-5 */}
+                        <li className=" mb-5 sm:pr-0  pt-2 sm:justify-self-end">
                             {each.date}
                         </li>
                     </div>
@@ -179,7 +194,7 @@ function Forum ({ commentList, usernames, createComment, loggedInStatus, loggedI
 
     return (
         <div>
-            <div className="font-bold mx-20 rounded-lg py-5 mt-2">
+            <div className="font-bold mx-10 rounded-lg py-5 mt-2">
                 <h1>{commentNodes}</h1>
             </div>
             {loggedInStatus ? 
