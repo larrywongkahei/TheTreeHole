@@ -27,7 +27,7 @@ function Footer () {
 
     function handleContactMe(){
         Swal.fire({
-            title:'Enter your email',
+            title:'Enter your details',
             width:'45%',
             html:
             `
@@ -54,7 +54,7 @@ function Footer () {
         }).then(result => {
             Swal.fire({
                 title:'Success',
-                text:`We will contact you via ${result.value.email} within three days.`,
+                text:`We will contact you via ${result.value.email} within few seconds.`,
                 icon:'success',
                 showConfirmButton:false,
                 timer:3300,
@@ -67,6 +67,7 @@ function Footer () {
         const {value : title} = await Swal.fire({
             title:'Report an error',
             input:'textarea',
+            inputPlaceholder:'Enter error',
             html:
             `
             <input type="text" id='title' class='swal2-input' placeholder='Enter title' />
