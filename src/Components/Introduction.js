@@ -8,7 +8,8 @@ function Introducion(){
 
     return (
         <div>
-            <p className="text-center w-[50%] mx-auto font-bold text-lg px-9 pt-2">
+            {/* text-center w-[50%] mx-auto font-bold text-lg px-9 pt-2 */}
+            <p className="text-center w-[85%] mx-auto font-bold text-lg px-9 pt-2 sm:w-[75%] md:w-[60%] lg:w-[55%] xl:w-[50%]">
                 <Typed 
                 strings={['According to official statistic,\
                 Depression is one of the most prevalent mental health disorders, \
@@ -19,7 +20,7 @@ function Introducion(){
                 We want you to know.\
                 You are not alone, we are here for you.']}
                 typeSpeed={45}
-                className="text-white"
+                className="text-cyan-800"
                 />
             </p>
             <Link to="/signup" className="flex justify-center pt-10">
